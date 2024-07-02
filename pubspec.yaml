@@ -45,6 +45,7 @@ dependencies:
   fl_chart: ^0.68.0
   hover_widget: ^0.1.1
   google_fonts: ^6.2.1
+  get: ^4.6.6
 
 dev_dependencies:
   flutter_test:

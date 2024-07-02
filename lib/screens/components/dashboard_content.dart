@@ -12,7 +12,7 @@ import 'package:project_erp/screens/components/viewers.dart';
 import 'discussions.dart';
 
 class DashboardContent extends StatelessWidget {
-  const DashboardContent({Key? key}) : super(key: key);
+  DashboardContent({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

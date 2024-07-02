@@ -1,4 +1,8 @@
 import 'dart:math';
+import 'package:get/get.dart';
+import 'package:project_erp/controllers/getController.dart';
+import 'package:project_erp/controllers/themeController.dart';
+import 'package:project_erp/screens/components/theme.dart';
 import 'package:provider/provider.dart';
 import 'package:project_erp/controllers/controller.dart';
 import 'package:project_erp/screens/components/dashboard_clean_content.dart';
@@ -13,14 +17,15 @@ import 'package:project_erp/constants/constants.dart';
 import 'bar_chart_users.dart';
 
 class Login extends StatelessWidget {
-  const Login({Key? key}) : super(key: key);
+  Login({Key? key}) : super(key: key);
+  final themeController = Get.put(GetThemeController());
 
   @override
   Widget build(BuildContext context) {
     return Container(
       constraints: BoxConstraints(minHeight: 300, minWidth: 400),
       decoration: BoxDecoration(
-        color: secondaryColor,
+        color: Theme.of(context).cardColor,
         borderRadius: BorderRadius.circular(10),
         boxShadow: [
           BoxShadow(
@@ -38,6 +43,7 @@ class Login extends StatelessWidget {
             SizedBox(
               height: 50,
             ),
+
             Text("LOGIN",
                 textAlign: TextAlign.center,
                 style: TextStyle(
@@ -113,7 +119,7 @@ class Login extends StatelessWidget {
                             context,
                             MaterialPageRoute(
                                 builder: (BuildContext context) =>
-                                    const DashboardCleanScreen()));
+                                    DashboardCleanScreen()));
                       },
                       child: const Text(
                         'Login',
@@ -159,6 +165,20 @@ class Login extends StatelessWidget {
                             borderRadius: BorderRadius.circular(15)),
                         backgroundColor: bgColor,
                         shadowColor: TextColorBlue,
+                      )),
+                ),
+                Padding(
+                  padding:
+                      const EdgeInsets.symmetric(vertical: 5, horizontal: 5),
+                  child: Obx(() => Switch(
+                        value: themeController.currentTheme == ThemeMode.light,
+                        onChanged: (value) {
+                          themeController.switchTheme();
+                          Get.changeThemeMode(
+                              themeController.currentTheme.value);
+                          print(themeController.currentTheme.value);
+                        },
+                        activeColor: CustomTheme.white,
                       )),
                 )
               ],

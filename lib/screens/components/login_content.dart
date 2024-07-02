@@ -1,7 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:project_erp/constants/constants.dart';
 import 'package:project_erp/constants/responsive.dart';
+import 'package:project_erp/controllers/themeController.dart';
 import 'package:project_erp/screens/components/Login.dart';
 import 'package:project_erp/screens/components/analytic_cards.dart';
 import 'package:project_erp/screens/components/custom_appbar.dart';
@@ -13,7 +15,8 @@ import 'package:project_erp/screens/components/viewers.dart';
 import 'discussions.dart';
 
 class LoginContent extends StatelessWidget {
-  const LoginContent({Key? key}) : super(key: key);
+  LoginContent({Key? key}) : super(key: key);
+  final themeController = Get.put(GetThemeController());
 
   @override
   Widget build(BuildContext context) {

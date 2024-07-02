@@ -3,14 +3,17 @@ import 'package:flutter/material.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hover_widget/hover_widget.dart';
 import 'package:project_erp/constants/constants.dart';
 import 'package:project_erp/constants/responsive.dart';
 import 'package:project_erp/controllers/controller.dart';
+import 'package:project_erp/controllers/themeController.dart';
 import 'package:project_erp/screens/components/dashboard_clean_content.dart';
 import 'package:project_erp/screens/components/dashboard_content.dart';
 import 'package:project_erp/screens/components/login_content.dart';
+import 'package:project_erp/screens/components/theme.dart';
 import 'package:project_erp/screens/login_screen.dart';
 import 'package:project_erp/constants/responsive.dart';
 
@@ -37,18 +40,14 @@ import 'package:provider/provider.dart';
 // }
 
 class WelcomeScreen extends StatelessWidget {
-  const WelcomeScreen({Key? key}) : super(key: key);
+  WelcomeScreen({Key? key}) : super(key: key);
+  final themeController = Get.put(GetThemeController());
 
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-          textTheme: GoogleFonts.poppinsTextTheme(
-        Theme.of(context).textTheme,
-      )),
-      home: Scaffold(
+    return Container(
+      child: Scaffold(
         body: Center(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
@@ -102,6 +101,21 @@ class WelcomeScreen extends StatelessWidget {
                 Padding(padding: new EdgeInsets.only(bottom: 50)),
               if (Responsive.isMobile(context))
                 Padding(padding: new EdgeInsets.only(bottom: 60)),
+
+              Row(
+                children: [
+                  Obx(() => Switch(
+                        value: themeController.currentTheme == ThemeMode.light,
+                        onChanged: (value) {
+                          themeController.switchTheme();
+                          Get.changeThemeMode(
+                              themeController.currentTheme.value);
+                          print(themeController.currentTheme.value);
+                        },
+                        activeColor: CustomTheme.white,
+                      ))
+                ],
+              ),
               if (Responsive.isMobile(context))
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -114,14 +128,14 @@ class WelcomeScreen extends StatelessWidget {
                       height: 125,
                       child: HoverWidget(
                           child: FloatingActionButton(
-                        backgroundColor: bgColorPeach,
-                        hoverColor: bgColorHover,
+                        backgroundColor: Theme.of(context).cardColor,
+                        hoverColor: Theme.of(context).hoverColor,
                         onPressed: () {
                           Navigator.push(
                               context,
                               MaterialPageRoute(
                                   builder: (BuildContext context) =>
-                                      const LoginScreen()));
+                                      LoginScreen()));
                         },
                         child: Image.asset('/images/logompe.png'),
                       )),
@@ -134,14 +148,14 @@ class WelcomeScreen extends StatelessWidget {
                       height: 125,
                       child: HoverWidget(
                           child: FloatingActionButton(
-                        backgroundColor: bgColorPeach,
-                        hoverColor: bgColorHover,
+                        backgroundColor: Theme.of(context).cardColor,
+                        hoverColor: Theme.of(context).hoverColor,
                         onPressed: () {
                           Navigator.push(
                               context,
                               MaterialPageRoute(
                                   builder: (BuildContext context) =>
-                                      const LoginScreen()));
+                                      LoginScreen()));
                         },
                         child: Image.asset('/images/dwiputra.png'),
                       )),
@@ -167,14 +181,14 @@ class WelcomeScreen extends StatelessWidget {
                       height: 125,
                       child: HoverWidget(
                           child: FloatingActionButton(
-                        backgroundColor: bgColorPeach,
-                        hoverColor: bgColorHover,
+                        backgroundColor: Theme.of(context).cardColor,
+                        hoverColor: Theme.of(context).hoverColor,
                         onPressed: () {
                           Navigator.push(
                               context,
                               MaterialPageRoute(
                                   builder: (BuildContext context) =>
-                                      const LoginScreen()));
+                                      LoginScreen()));
                         },
                         child: Image.asset('/images/rajaniaga.png'),
                       )),
@@ -187,14 +201,14 @@ class WelcomeScreen extends StatelessWidget {
                       height: 125,
                       child: HoverWidget(
                           child: FloatingActionButton(
-                        backgroundColor: bgColorPeach,
-                        hoverColor: bgColorHover,
+                        backgroundColor: Theme.of(context).cardColor,
+                        hoverColor: Theme.of(context).hoverColor,
                         onPressed: () {
                           Navigator.push(
                               context,
                               MaterialPageRoute(
                                   builder: (BuildContext context) =>
-                                      const LoginScreen()));
+                                      LoginScreen()));
                         },
                         child: Image.asset('/images/golden.png'),
                       )),
@@ -220,14 +234,14 @@ class WelcomeScreen extends StatelessWidget {
                       height: 125,
                       child: HoverWidget(
                           child: FloatingActionButton(
-                        backgroundColor: bgColorPeach,
-                        hoverColor: bgColorHover,
+                        backgroundColor: Theme.of(context).cardColor,
+                        hoverColor: Theme.of(context).hoverColor,
                         onPressed: () {
                           Navigator.push(
                               context,
                               MaterialPageRoute(
                                   builder: (BuildContext context) =>
-                                      const LoginScreen()));
+                                      LoginScreen()));
                         },
                         child: Image.asset('/images/alamlangit.png'),
                       )),
@@ -240,14 +254,14 @@ class WelcomeScreen extends StatelessWidget {
                       height: 125,
                       child: HoverWidget(
                           child: FloatingActionButton(
-                        backgroundColor: bgColorPeach,
-                        hoverColor: bgColorHover,
+                        backgroundColor: Theme.of(context).cardColor,
+                        hoverColor: Theme.of(context).hoverColor,
                         onPressed: () {
                           Navigator.push(
                               context,
                               MaterialPageRoute(
                                   builder: (BuildContext context) =>
-                                      const LoginScreen()));
+                                      LoginScreen()));
                         },
                         child: Image.asset('/images/blanjablanja.png'),
                       )),
@@ -273,14 +287,14 @@ class WelcomeScreen extends StatelessWidget {
                       height: 125,
                       child: HoverWidget(
                           child: FloatingActionButton(
-                        backgroundColor: bgColorPeach,
-                        hoverColor: bgColorHover,
+                        backgroundColor: Theme.of(context).cardColor,
+                        hoverColor: Theme.of(context).hoverColor,
                         onPressed: () {
                           Navigator.push(
                               context,
                               MaterialPageRoute(
                                   builder: (BuildContext context) =>
-                                      const LoginScreen()));
+                                      LoginScreen()));
                         },
                         child: Image.asset('/images/koperasi.png'),
                       )),
@@ -293,14 +307,14 @@ class WelcomeScreen extends StatelessWidget {
                       height: 125,
                       child: HoverWidget(
                           child: FloatingActionButton(
-                        backgroundColor: bgColorPeach,
-                        hoverColor: bgColorHover,
+                        backgroundColor: Theme.of(context).cardColor,
+                        hoverColor: Theme.of(context).hoverColor,
                         onPressed: () {
                           Navigator.push(
                               context,
                               MaterialPageRoute(
                                   builder: (BuildContext context) =>
-                                      const LoginScreen()));
+                                      LoginScreen()));
                         },
                         child: Image.asset('/images/hrm.png'),
                       )),
@@ -322,14 +336,14 @@ class WelcomeScreen extends StatelessWidget {
                       height: 150,
                       child: HoverWidget(
                           child: FloatingActionButton(
-                        backgroundColor: bgColorPeach,
-                        hoverColor: bgColorHover,
+                        backgroundColor: Theme.of(context).cardColor,
+                        hoverColor: Theme.of(context).hoverColor,
                         onPressed: () {
                           Navigator.push(
                               context,
                               MaterialPageRoute(
                                   builder: (BuildContext context) =>
-                                      const LoginScreen()));
+                                      LoginScreen()));
                         },
                         child: Image.asset('/images/logompe.png'),
                       )),
@@ -342,14 +356,14 @@ class WelcomeScreen extends StatelessWidget {
                       height: 150,
                       child: HoverWidget(
                           child: FloatingActionButton(
-                        backgroundColor: bgColorPeach,
-                        hoverColor: bgColorHover,
+                        backgroundColor: Theme.of(context).cardColor,
+                        hoverColor: Theme.of(context).hoverColor,
                         onPressed: () {
                           Navigator.push(
                               context,
                               MaterialPageRoute(
                                   builder: (BuildContext context) =>
-                                      const LoginScreen()));
+                                      LoginScreen()));
                         },
                         child: Image.asset('/images/dwiputra.png'),
                       )),
@@ -362,14 +376,14 @@ class WelcomeScreen extends StatelessWidget {
                       height: 150,
                       child: HoverWidget(
                           child: FloatingActionButton(
-                        backgroundColor: bgColorPeach,
-                        hoverColor: bgColorHover,
+                        backgroundColor: Theme.of(context).cardColor,
+                        hoverColor: Theme.of(context).hoverColor,
                         onPressed: () {
                           Navigator.push(
                               context,
                               MaterialPageRoute(
                                   builder: (BuildContext context) =>
-                                      const LoginScreen()));
+                                      LoginScreen()));
                         },
                         child: Image.asset('/images/rajaniaga.png'),
                       )),
@@ -382,14 +396,14 @@ class WelcomeScreen extends StatelessWidget {
                       height: 150,
                       child: HoverWidget(
                           child: FloatingActionButton(
-                        backgroundColor: bgColorPeach,
-                        hoverColor: bgColorHover,
+                        backgroundColor: Theme.of(context).cardColor,
+                        hoverColor: Theme.of(context).hoverColor,
                         onPressed: () {
                           Navigator.push(
                               context,
                               MaterialPageRoute(
                                   builder: (BuildContext context) =>
-                                      const LoginScreen()));
+                                      LoginScreen()));
                         },
                         child: Image.asset('/images/golden.png'),
                       )),
@@ -413,14 +427,14 @@ class WelcomeScreen extends StatelessWidget {
                       height: 150,
                       child: HoverWidget(
                           child: FloatingActionButton(
-                        backgroundColor: bgColorPeach,
-                        hoverColor: bgColorHover,
+                        backgroundColor: Theme.of(context).cardColor,
+                        hoverColor: Theme.of(context).hoverColor,
                         onPressed: () {
                           Navigator.push(
                               context,
                               MaterialPageRoute(
                                   builder: (BuildContext context) =>
-                                      const LoginScreen()));
+                                      LoginScreen()));
                         },
                         child: Image.asset('/images/alamlangit.png'),
                       )),
@@ -433,14 +447,14 @@ class WelcomeScreen extends StatelessWidget {
                       height: 150,
                       child: HoverWidget(
                           child: FloatingActionButton(
-                        backgroundColor: bgColorPeach,
-                        hoverColor: bgColorHover,
+                        backgroundColor: Theme.of(context).cardColor,
+                        hoverColor: Theme.of(context).hoverColor,
                         onPressed: () {
                           Navigator.push(
                               context,
                               MaterialPageRoute(
                                   builder: (BuildContext context) =>
-                                      const LoginScreen()));
+                                      LoginScreen()));
                         },
                         child: Image.asset('/images/blanjablanja.png'),
                       )),
@@ -453,14 +467,14 @@ class WelcomeScreen extends StatelessWidget {
                       height: 150,
                       child: HoverWidget(
                           child: FloatingActionButton(
-                        backgroundColor: bgColorPeach,
-                        hoverColor: bgColorHover,
+                        backgroundColor: Theme.of(context).cardColor,
+                        hoverColor: Theme.of(context).hoverColor,
                         onPressed: () {
                           Navigator.push(
                               context,
                               MaterialPageRoute(
                                   builder: (BuildContext context) =>
-                                      const LoginScreen()));
+                                      LoginScreen()));
                         },
                         child: Image.asset('/images/koperasi.png'),
                       )),
@@ -473,14 +487,14 @@ class WelcomeScreen extends StatelessWidget {
                       height: 150,
                       child: HoverWidget(
                           child: FloatingActionButton(
-                        backgroundColor: bgColorPeach,
-                        hoverColor: bgColorHover,
+                        backgroundColor: Theme.of(context).cardColor,
+                        hoverColor: Theme.of(context).hoverColor,
                         onPressed: () {
                           Navigator.push(
                               context,
                               MaterialPageRoute(
                                   builder: (BuildContext context) =>
-                                      const LoginScreen()));
+                                      LoginScreen()));
                         },
                         child: Image.asset('/images/hrm.png'),
                       )),
@@ -502,14 +516,14 @@ class WelcomeScreen extends StatelessWidget {
                       height: 150,
                       child: HoverWidget(
                           child: FloatingActionButton(
-                        backgroundColor: bgColorPeach,
-                        hoverColor: bgColorHover,
+                        backgroundColor: Theme.of(context).cardColor,
+                        hoverColor: Theme.of(context).hoverColor,
                         onPressed: () {
                           Navigator.push(
                               context,
                               MaterialPageRoute(
                                   builder: (BuildContext context) =>
-                                      const LoginScreen()));
+                                      LoginScreen()));
                         },
                         child: Image.asset('/images/logompe.png'),
                       )),
@@ -522,14 +536,14 @@ class WelcomeScreen extends StatelessWidget {
                       height: 150,
                       child: HoverWidget(
                           child: FloatingActionButton(
-                        backgroundColor: bgColorPeach,
-                        hoverColor: bgColorHover,
+                        backgroundColor: Theme.of(context).cardColor,
+                        hoverColor: Theme.of(context).hoverColor,
                         onPressed: () {
                           Navigator.push(
                               context,
                               MaterialPageRoute(
                                   builder: (BuildContext context) =>
-                                      const LoginScreen()));
+                                      LoginScreen()));
                         },
                         child: Image.asset('/images/dwiputra.png'),
                       )),
@@ -542,14 +556,14 @@ class WelcomeScreen extends StatelessWidget {
                       height: 150,
                       child: HoverWidget(
                           child: FloatingActionButton(
-                        backgroundColor: bgColorPeach,
-                        hoverColor: bgColorHover,
+                        backgroundColor: Theme.of(context).cardColor,
+                        hoverColor: Theme.of(context).hoverColor,
                         onPressed: () {
                           Navigator.push(
                               context,
                               MaterialPageRoute(
                                   builder: (BuildContext context) =>
-                                      const LoginScreen()));
+                                      LoginScreen()));
                         },
                         child: Image.asset('/images/rajaniaga.png'),
                       )),
@@ -596,14 +610,14 @@ class WelcomeScreen extends StatelessWidget {
                       height: 150,
                       child: HoverWidget(
                           child: FloatingActionButton(
-                        backgroundColor: bgColorPeach,
-                        hoverColor: bgColorHover,
+                        backgroundColor: Theme.of(context).cardColor,
+                        hoverColor: Theme.of(context).hoverColor,
                         onPressed: () {
                           Navigator.push(
                               context,
                               MaterialPageRoute(
                                   builder: (BuildContext context) =>
-                                      const LoginScreen()));
+                                      LoginScreen()));
                         },
                         child: Image.asset('/images/golden.png'),
                       )),
@@ -616,14 +630,14 @@ class WelcomeScreen extends StatelessWidget {
                       height: 150,
                       child: HoverWidget(
                           child: FloatingActionButton(
-                        backgroundColor: bgColorPeach,
-                        hoverColor: bgColorHover,
+                        backgroundColor: Theme.of(context).cardColor,
+                        hoverColor: Theme.of(context).hoverColor,
                         onPressed: () {
                           Navigator.push(
                               context,
                               MaterialPageRoute(
                                   builder: (BuildContext context) =>
-                                      const LoginScreen()));
+                                      LoginScreen()));
                         },
                         child: Image.asset('/images/alamlangit.png'),
                       )),
@@ -636,14 +650,14 @@ class WelcomeScreen extends StatelessWidget {
                       height: 150,
                       child: HoverWidget(
                           child: FloatingActionButton(
-                        backgroundColor: bgColorPeach,
-                        hoverColor: bgColorHover,
+                        backgroundColor: Theme.of(context).cardColor,
+                        hoverColor: Theme.of(context).hoverColor,
                         onPressed: () {
                           Navigator.push(
                               context,
                               MaterialPageRoute(
                                   builder: (BuildContext context) =>
-                                      const LoginScreen()));
+                                      LoginScreen()));
                         },
                         child: Image.asset('/images/blanjablanja.png'),
                       )),
@@ -690,14 +704,14 @@ class WelcomeScreen extends StatelessWidget {
                       height: 150,
                       child: HoverWidget(
                           child: FloatingActionButton(
-                        backgroundColor: bgColorPeach,
-                        hoverColor: bgColorHover,
+                        backgroundColor: Theme.of(context).cardColor,
+                        hoverColor: Theme.of(context).hoverColor,
                         onPressed: () {
                           Navigator.push(
                               context,
                               MaterialPageRoute(
                                   builder: (BuildContext context) =>
-                                      const LoginScreen()));
+                                      LoginScreen()));
                         },
                         child: Image.asset('/images/koperasi.png'),
                       )),
@@ -710,14 +724,14 @@ class WelcomeScreen extends StatelessWidget {
                       height: 150,
                       child: HoverWidget(
                           child: FloatingActionButton(
-                        backgroundColor: bgColorPeach,
-                        hoverColor: bgColorHover,
+                        backgroundColor: Theme.of(context).cardColor,
+                        hoverColor: Theme.of(context).hoverColor,
                         onPressed: () {
                           Navigator.push(
                               context,
                               MaterialPageRoute(
                                   builder: (BuildContext context) =>
-                                      const LoginScreen()));
+                                      LoginScreen()));
                         },
                         child: Image.asset('/images/hrm.png'),
                       )),

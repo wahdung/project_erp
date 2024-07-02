@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:get/get.dart';
+import 'package:project_erp/constants/responsive.dart';
+import 'package:project_erp/controllers/themeController.dart';
+import 'package:project_erp/screens/components/theme.dart';
 import 'package:project_erp/screens/welcome_screen.dart';
 import 'package:provider/provider.dart';
 import 'package:project_erp/constants/constants.dart';
@@ -10,7 +14,8 @@ import 'package:project_erp/screens/login_screen.dart';
 import 'package:project_erp/controllers/controller.dart';
 
 class DrawerMenu extends StatelessWidget {
-  const DrawerMenu({Key? key}) : super(key: key);
+  DrawerMenu({Key? key}) : super(key: key);
+  final themeController = Get.put(GetThemeController());
 
   @override
   Widget build(BuildContext context) {
@@ -203,6 +208,16 @@ class DrawerMenu extends StatelessWidget {
                     MaterialPageRoute(
                         builder: (BuildContext context) => WelcomeScreen()));
               }),
+          if (Responsive.isMobile(context))
+            Obx(() => Switch(
+                  value: themeController.currentTheme == ThemeMode.light,
+                  onChanged: (value) {
+                    themeController.switchTheme();
+                    Get.changeThemeMode(themeController.currentTheme.value);
+                    print(themeController.currentTheme.value);
+                  },
+                  activeColor: CustomTheme.lightThemeColor,
+                )),
         ],
       ),
     );

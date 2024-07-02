@@ -6,7 +6,7 @@ import 'package:project_erp/constants/responsive.dart';
 import 'package:project_erp/controllers/controller.dart';
 
 class ProfileInfo extends StatelessWidget {
-  const ProfileInfo({Key? key}) : super(key: key);
+  ProfileInfo({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +21,7 @@ class ProfileInfo extends StatelessWidget {
                 icon: SvgPicture.asset(
                   "icons/Bell.svg",
                   height: 25,
-                  color: textColor.withOpacity(0.8),
+                  color: Theme.of(context).hoverColor,
                 ),
               ),
               Positioned(
@@ -47,8 +47,7 @@ class ProfileInfo extends StatelessWidget {
           child: Row(
             children: [
               ClipRRect(
-                child: 
-                Image.asset(
+                child: Image.asset(
                   'images/photo3.jpg',
                   height: 38,
                   width: 38,
@@ -63,7 +62,7 @@ class ProfileInfo extends StatelessWidget {
                   child: Text(
                     'Hii, Gungwah',
                     style: TextStyle(
-                      color: textColor,
+                      color: Theme.of(context).hoverColor,
                       fontWeight: FontWeight.w800,
                     ),
                   ),

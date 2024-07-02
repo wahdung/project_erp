@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:project_erp/controllers/themeController.dart';
+import 'package:project_erp/screens/components/home.dart';
+import 'package:project_erp/screens/components/theme.dart';
 import 'package:project_erp/screens/welcome_screen.dart';
 // import '../../../Web-App/webapp1/lib/welcome_screen.dart';
 import 'package:provider/provider.dart';
@@ -13,6 +17,7 @@ void main() {
 }
 
 class MyApp extends StatelessWidget {
+  final themeController = Get.put(GetThemeController());
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
@@ -22,15 +27,18 @@ class MyApp extends StatelessWidget {
           create: (context) => Controller(),
         )
       ],
-      child: MaterialApp(
+      child: GetMaterialApp(
         title: 'Responsive Admin Dashboard',
         debugShowCheckedModeBanner: false,
-        theme: ThemeData(
-            primarySwatch: Colors.blue,
-            textTheme: GoogleFonts.poppinsTextTheme(
-              Theme.of(context).textTheme,
-            )),
-        home: const Scaffold(body: WelcomeScreen()),
+        theme: CustomTheme.lightTheme,
+        darkTheme: CustomTheme.darkTheme,
+        themeMode: ThemeMode.dark,
+        // theme: ThemeData(
+        //     primarySwatch: Colors.blue,
+        //     textTheme: GoogleFonts.poppinsTextTheme(
+        //       Theme.of(context).textTheme,
+        //     )),
+        home: Scaffold(body: WelcomeScreen()),
       ),
     );
 

@@ -4,7 +4,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:project_erp/constants/constants.dart';
 
 class DrawerListTile extends StatelessWidget {
-  const DrawerListTile(
+  DrawerListTile(
       {Key? key,
       required this.title,
       required this.svgSrc,
@@ -33,11 +33,10 @@ class DrawerListTile extends StatelessWidget {
       //   style: TextStyle(color: Colors.black),
       // ),
       contentPadding: EdgeInsets.only(left: 50),
-      
-      leading: 
-      SvgPicture.asset(
+
+      leading: SvgPicture.asset(
         svgSrc,
-       color: colorIcon,
+        color: colorIcon,
         height: 20,
         alignment: Alignment.centerRight,
       ),

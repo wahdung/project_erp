@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:project_erp/constants/constants.dart';
 import 'package:project_erp/constants/responsive.dart';
 import 'package:project_erp/controllers/controller.dart';
+import 'package:project_erp/controllers/themeController.dart';
 import 'package:project_erp/screens/components/dashboard_clean_content.dart';
 import 'package:project_erp/screens/components/dashboard_content.dart';
 import 'package:project_erp/screens/components/login_content.dart';
@@ -10,16 +12,16 @@ import 'components/drawer_menu.dart';
 import 'package:provider/provider.dart';
 
 class DashboardCleanScreen extends StatelessWidget {
-  const DashboardCleanScreen({Key? key}) : super(key: key);
+  DashboardCleanScreen({Key? key}) : super(key: key);
+  final themeController = Get.put(GetThemeController());
 
   @override
   Widget build(BuildContext context) {
     return
         // MaterialApp(title: 'Dashboard');
-        MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: Scaffold(
-        backgroundColor: bgColor,
+        Container(
+      child: Scaffold(
+        backgroundColor: Theme.of(context).cardColor,
         drawer: DrawerMenu(),
         key: context.read<Controller>().scaffoldKey,
         body: SafeArea(
