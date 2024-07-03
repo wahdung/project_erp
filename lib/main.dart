@@ -7,7 +7,6 @@ import 'package:project_erp/screens/components/theme.dart';
 import 'package:project_erp/screens/welcome_screen.dart';
 // import '../../../Web-App/webapp1/lib/welcome_screen.dart';
 import 'package:provider/provider.dart';
-import 'package:project_erp/controllers/controller.dart';
 // import 'package:project_erp/screens/dash_board_screen.dart';
 import 'package:project_erp/screens/dash_board_clean_screen.dart';
 import 'package:project_erp/screens/login_screen.dart';
@@ -17,30 +16,30 @@ void main() {
 }
 
 class MyApp extends StatelessWidget {
+  MyApp({Key? key}) : super(key: key);
+
   final themeController = Get.put(GetThemeController());
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MultiProvider(
-      providers: [
-        ChangeNotifierProvider(
-          create: (context) => Controller(),
-        )
-      ],
-      child: GetMaterialApp(
-        title: 'Responsive Admin Dashboard',
-        debugShowCheckedModeBanner: false,
-        theme: CustomTheme.lightTheme,
-        darkTheme: CustomTheme.darkTheme,
-        themeMode: ThemeMode.dark,
-        // theme: ThemeData(
-        //     primarySwatch: Colors.blue,
-        //     textTheme: GoogleFonts.poppinsTextTheme(
-        //       Theme.of(context).textTheme,
-        //     )),
-        home: Scaffold(body: WelcomeScreen()),
-      ),
-    );
+    return Obx(() => GetMaterialApp(
+          title: 'Responsive Admin Dashboard',
+          debugShowCheckedModeBanner: false,
+          theme: CustomTheme.lightTheme,
+          darkTheme: CustomTheme.darkTheme,
+          themeMode: themeController.theme,
+          // theme: ThemeData(
+          //     primarySwatch: Colors.blue,
+          //     textTheme: GoogleFonts.poppinsTextTheme(
+          //       Theme.of(context).textTheme,
+          //     )),
+          initialRoute: '/welcome',
+          getPages: [
+            GetPage(name: '/welcome', page: () => WelcomeScreen()),
+            GetPage(name: '/login', page: () => LoginScreen()),
+            GetPage(name: '/dashboard', page: () => DashboardCleanScreen()),
+          ],
+        ));
 
     // MaterialApp(
     //   title: 'Responsive Admin Dashboard',

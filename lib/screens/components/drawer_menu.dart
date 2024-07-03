@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
+import 'package:hover_widget/hover_widget.dart';
 import 'package:project_erp/constants/responsive.dart';
 import 'package:project_erp/controllers/themeController.dart';
 import 'package:project_erp/screens/components/theme.dart';
@@ -30,13 +31,15 @@ class DrawerMenu extends StatelessWidget {
             padding: EdgeInsets.only(left: textPadding),
             child: const Text('Dashboard'),
           ),
-          DrawerListTile(
-              title: 'Dashboard',
-              svgSrc: 'icons/Dashboard.svg',
-              colorIcon: TextColorBlue,
-              tap: () {
-                print('You Click Dash Board');
-              }),
+          HoverWidget(
+            child: DrawerListTile(
+                title: 'Dashboard',
+                svgSrc: 'icons/Dashboard.svg',
+                colorIcon: TextColorBlue,
+                tap: () {
+                  print('You Click Dash Board');
+                }),
+          ),
           // Padding(
           //   padding: const EdgeInsets.only(
           //     left: textPadding,
@@ -85,45 +88,53 @@ class DrawerMenu extends StatelessWidget {
               alignment: Alignment.centerLeft,
             ),
             children: [
-              Container(
-                padding: EdgeInsets.only(left: 10),
-                child: DrawerListTile(
-                    title: 'Customer',
-                    svgSrc: 'icons/Subscribers.svg',
-                    colorIcon: grey,
-                    tap: () {
-                      print('You Click Customer');
-                    }),
+              HoverWidget(
+                child: Container(
+                  padding: EdgeInsets.only(left: 10),
+                  child: DrawerListTile(
+                      title: 'Customer',
+                      svgSrc: 'icons/Subscribers.svg',
+                      colorIcon: grey,
+                      tap: () {
+                        print('You Click Customer');
+                      }),
+                ),
               ),
-              Container(
-                padding: EdgeInsets.only(left: 10),
-                child: DrawerListTile(
-                    title: 'Partner',
-                    svgSrc: 'icons/Subscribers.svg',
-                    colorIcon: grey,
-                    tap: () {
-                      print('You Click Partner');
-                    }),
+              HoverWidget(
+                child: Container(
+                  padding: EdgeInsets.only(left: 10),
+                  child: DrawerListTile(
+                      title: 'Partner',
+                      svgSrc: 'icons/Subscribers.svg',
+                      colorIcon: grey,
+                      tap: () {
+                        print('You Click Partner');
+                      }),
+                ),
               ),
-              Container(
-                padding: EdgeInsets.only(left: 10),
-                child: DrawerListTile(
-                    title: 'Supplier',
-                    svgSrc: 'icons/Subscribers.svg',
-                    colorIcon: grey,
-                    tap: () {
-                      print('You Click Supplier');
-                    }),
+              HoverWidget(
+                child: Container(
+                  padding: EdgeInsets.only(left: 10),
+                  child: DrawerListTile(
+                      title: 'Supplier',
+                      svgSrc: 'icons/Subscribers.svg',
+                      colorIcon: grey,
+                      tap: () {
+                        print('You Click Supplier');
+                      }),
+                ),
               ),
-              Container(
-                padding: EdgeInsets.only(left: 10),
-                child: DrawerListTile(
-                    title: 'Karyawan',
-                    svgSrc: 'icons/Subscribers.svg',
-                    colorIcon: grey,
-                    tap: () {
-                      print('You Click karyawan');
-                    }),
+              HoverWidget(
+                child: Container(
+                  padding: EdgeInsets.only(left: 10),
+                  child: DrawerListTile(
+                      title: 'Karyawan',
+                      svgSrc: 'icons/Subscribers.svg',
+                      colorIcon: grey,
+                      tap: () {
+                        print('You Click karyawan');
+                      }),
+                ),
               ),
             ],
           ),
@@ -154,33 +165,39 @@ class DrawerMenu extends StatelessWidget {
               alignment: Alignment.centerLeft,
             ),
             children: [
-              Container(
-                padding: EdgeInsets.only(left: 10),
-                child: DrawerListTile(
-                    title: 'Jenis Produk',
+              HoverWidget(
+                child: Container(
+                  padding: EdgeInsets.only(left: 10),
+                  child: DrawerListTile(
+                      title: 'Jenis Produk',
+                      svgSrc: 'icons/Box.svg',
+                      colorIcon: grey,
+                      tap: () {
+                        print('You Click Jenis Produk');
+                      }),
+                ),
+              ),
+              HoverWidget(
+                child: Container(
+                  padding: EdgeInsets.only(left: 10),
+                  child: DrawerListTile(
+                      title: 'Merk',
+                      svgSrc: 'icons/Box.svg',
+                      colorIcon: grey,
+                      tap: () {
+                        print('You Click Merk');
+                      }),
+                ),
+              ),
+              HoverWidget(
+                child: Container(
+                  padding: EdgeInsets.only(left: 10),
+                  child: DrawerListTile(
+                    title: 'Type',
                     svgSrc: 'icons/Box.svg',
                     colorIcon: grey,
-                    tap: () {
-                      print('You Click Jenis Produk');
-                    }),
-              ),
-              Container(
-                padding: EdgeInsets.only(left: 10),
-                child: DrawerListTile(
-                    title: 'Merk',
-                    svgSrc: 'icons/Box.svg',
-                    colorIcon: grey,
-                    tap: () {
-                      print('You Click Merk');
-                    }),
-              ),
-              Container(
-                padding: EdgeInsets.only(left: 10),
-                child: DrawerListTile(
-                  title: 'Type',
-                  svgSrc: 'icons/Box.svg',
-                  colorIcon: grey,
-                  tap: () {},
+                    tap: () {},
+                  ),
                 ),
               ),
             ],
@@ -193,31 +210,54 @@ class DrawerMenu extends StatelessWidget {
               thickness: 1,
             ),
           ),
-          DrawerListTile(
-              title: 'Settings',
-              svgSrc: 'icons/Setting.svg',
-              colorIcon: TextColorBlue,
-              tap: () {}),
-          DrawerListTile(
-              title: 'Logout',
-              svgSrc: 'icons/Logout.svg',
-              colorIcon: TextColorBlue,
-              tap: () {
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (BuildContext context) => WelcomeScreen()));
-              }),
+          HoverWidget(
+            child: DrawerListTile(
+                title: 'Settings',
+                svgSrc: 'icons/Setting.svg',
+                colorIcon: TextColorBlue,
+                tap: () {}),
+          ),
+          HoverWidget(
+            child: DrawerListTile(
+                title: 'Logout',
+                svgSrc: 'icons/Logout.svg',
+                colorIcon: TextColorBlue,
+                tap: () {
+                  themeController.Desktop(context)
+                      ? Get.back()
+                      : Get.toNamed('/login');
+                }),
+          ),
+          SizedBox(height: 300),
           if (Responsive.isMobile(context))
-            Obx(() => Switch(
-                  value: themeController.currentTheme == ThemeMode.light,
-                  onChanged: (value) {
-                    themeController.switchTheme();
-                    Get.changeThemeMode(themeController.currentTheme.value);
-                    print(themeController.currentTheme.value);
-                  },
-                  activeColor: CustomTheme.lightThemeColor,
-                )),
+            Row(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Obx(() => Container(
+                      child: Text(
+                        themeController.currentTheme == ThemeMode.light
+                            ? 'Light Mode'
+                            : 'Dark Mode',
+                        style: TextStyle(
+                            color: TextColorBlue, fontWeight: FontWeight.bold),
+                      ),
+                    )),
+                Obx(() => Switch(
+                      value: themeController.isDark.value,
+                      // themeController.currentTheme == ThemeMode.light,
+                      onChanged: (value) => themeController.ChangeMode(),
+
+                      //(value) {
+                      //   themeController.switchTheme();
+                      //   Get.changeThemeMode(
+                      //       themeController.currentTheme.value);
+                      //   print(themeController.currentTheme.value);
+                      // },
+                      activeColor: CustomTheme.lightThemeColor,
+                    )),
+              ],
+            )
         ],
       ),
     );

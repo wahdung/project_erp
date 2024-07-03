@@ -13,22 +13,22 @@ import 'package:provider/provider.dart';
 
 class DashboardCleanScreen extends StatelessWidget {
   DashboardCleanScreen({Key? key}) : super(key: key);
-  final themeController = Get.put(GetThemeController());
 
   @override
   Widget build(BuildContext context) {
+    final themeController = Get.put(GetThemeController());
     return
         // MaterialApp(title: 'Dashboard');
         Container(
       child: Scaffold(
         backgroundColor: Theme.of(context).cardColor,
         drawer: DrawerMenu(),
-        key: context.read<Controller>().scaffoldKey,
+        key: themeController.scaffoldKey,
         body: SafeArea(
           child: Row(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              if (Responsive.isDesktop(context))
+              if (themeController.Desktop(context))
                 Expanded(
                   child: DrawerMenu(),
                 ),

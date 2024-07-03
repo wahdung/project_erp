@@ -1,5 +1,7 @@
 import 'dart:math';
+import 'dart:ui';
 import 'package:get/get.dart';
+import 'package:hover_widget/hover_widget.dart';
 import 'package:project_erp/controllers/getController.dart';
 import 'package:project_erp/controllers/themeController.dart';
 import 'package:project_erp/screens/components/theme.dart';
@@ -29,7 +31,7 @@ class Login extends StatelessWidget {
         borderRadius: BorderRadius.circular(10),
         boxShadow: [
           BoxShadow(
-            color: Colors.grey.withOpacity(0.5),
+            color: Theme.of(context).shadowColor.withOpacity(0.5),
             spreadRadius: 5,
             blurRadius: 7,
             offset: Offset(0, 3),
@@ -105,84 +107,173 @@ class Login extends StatelessWidget {
                     ),
               ],
             ),
+            SizedBox(height: 50),
+
             Row(
+              crossAxisAlignment: CrossAxisAlignment.center,
               children: [
+                // SizedBox(
+                //   height: 150,
+                // ),
+                // Padding(
+                //   padding:
+                //       const EdgeInsets.symmetric(vertical: 5, horizontal: 5),
+                //   child: ElevatedButton(
+                //       onPressed: () {
+                //         Navigator.push(
+                //             context,
+                //             MaterialPageRoute(
+                //                 builder: (BuildContext context) =>
+                //                     DashboardCleanScreen()));
+                //       },
+                //       child: const Text(
+                //         'Login',
+                //         style: TextStyle(
+                //             color: TextColorBlue, fontWeight: FontWeight.bold),
+                //       ),
+                //       style: ElevatedButton.styleFrom(
+                //         shape: RoundedRectangleBorder(
+                //             borderRadius: BorderRadius.circular(15)),
+                //         backgroundColor: Theme.of(context).cardColor,
+                //         shadowColor: TextColorBlue,
+                //       )),
+                // ),
+                Container(
+                  width: 80,
+                  height: 30,
+                  decoration: BoxDecoration(
+                    shape: BoxShape.rectangle,
+                    borderRadius: BorderRadius.circular(15),
+                    boxShadow: [
+                      BoxShadow(
+                          color: Theme.of(context).shadowColor.withOpacity(0.5),
+                          spreadRadius: 1,
+                          blurRadius: 2,
+                          offset: Offset(0, 1)),
+                    ],
+                  ),
+                  child: HoverWidget(
+                      child: FloatingActionButton(
+                          backgroundColor: Theme.of(context).cardColor,
+                          hoverColor: Theme.of(context).hoverColor,
+                          onPressed: () {
+                            Get.toNamed('/dashboard');
+                          },
+                          child: Text(
+                            'Login',
+                            style: TextStyle(
+                                color: TextColorBlue,
+                                fontWeight: FontWeight.bold),
+                          ))),
+                ),
                 SizedBox(
-                  height: 150,
+                  width: 15,
                 ),
-                Padding(
-                  padding:
-                      const EdgeInsets.symmetric(vertical: 5, horizontal: 5),
-                  child: ElevatedButton(
-                      onPressed: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (BuildContext context) =>
-                                    DashboardCleanScreen()));
-                      },
-                      child: const Text(
-                        'Login',
-                        style: TextStyle(
-                            color: TextColorBlue, fontWeight: FontWeight.bold),
-                      ),
-                      style: ElevatedButton.styleFrom(
-                        shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(15)),
-                        backgroundColor: bgColor,
-                        shadowColor: TextColorBlue,
-                      )),
+                Container(
+                  width: 80,
+                  height: 30,
+                  decoration: BoxDecoration(
+                    shape: BoxShape.rectangle,
+                    borderRadius: BorderRadius.circular(15),
+                    boxShadow: [
+                      BoxShadow(
+                          color: Theme.of(context).shadowColor.withOpacity(0.5),
+                          spreadRadius: 1,
+                          blurRadius: 2,
+                          offset: Offset(0, 1)),
+                    ],
+                  ),
+                  child: HoverWidget(
+                      child: FloatingActionButton(
+                          backgroundColor: Theme.of(context).cardColor,
+                          hoverColor: Theme.of(context).hoverColor,
+                          onPressed: () {
+                            print(themeController.currentTheme.value);
+                          },
+                          child: Text(
+                            'Offline',
+                            style: TextStyle(
+                                color: TextColorBlue,
+                                fontWeight: FontWeight.bold),
+                          ))),
                 ),
-                Padding(
-                  padding:
-                      const EdgeInsets.symmetric(vertical: 5, horizontal: 5),
-                  child: ElevatedButton(
-                      onPressed: () {},
-                      child: const Text(
-                        'Offline',
-                        style: TextStyle(
-                            color: TextColorBlue, fontWeight: FontWeight.bold),
-                      ),
-                      style: ElevatedButton.styleFrom(
-                        shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(15)),
-                        backgroundColor: bgColor,
-                        shadowColor: TextColorBlue,
-                      )),
+                SizedBox(
+                  width: 15,
                 ),
-                Padding(
-                  padding:
-                      const EdgeInsets.symmetric(vertical: 5, horizontal: 5),
-                  child: ElevatedButton(
-                      onPressed: () {},
-                      child: const Text(
-                        'Settings',
-                        style: TextStyle(
-                            color: TextColorBlue, fontWeight: FontWeight.bold),
-                      ),
-                      style: ElevatedButton.styleFrom(
-                        shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(15)),
-                        backgroundColor: bgColor,
-                        shadowColor: TextColorBlue,
-                      )),
+                Container(
+                  width: 80,
+                  height: 30,
+                  decoration: BoxDecoration(
+                    shape: BoxShape.rectangle,
+                    borderRadius: BorderRadius.circular(15),
+                    boxShadow: [
+                      BoxShadow(
+                          color: Theme.of(context).shadowColor.withOpacity(0.5),
+                          spreadRadius: 1,
+                          blurRadius: 2,
+                          offset: Offset(0, 1)),
+                    ],
+                  ),
+                  child: HoverWidget(
+                      child: FloatingActionButton(
+                          backgroundColor: Theme.of(context).cardColor,
+                          hoverColor: Theme.of(context).hoverColor,
+                          onPressed: () {
+                            Get.back();
+                          },
+                          child: Text(
+                            'Settings',
+                            style: TextStyle(
+                                color: TextColorBlue,
+                                fontWeight: FontWeight.bold),
+                          ))),
                 ),
-                Padding(
+              ],
+            ),
+            SizedBox(height: 50),
+
+            Row(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Container(
+                  child: Text(
+                    themeController.currentTheme == ThemeMode.light
+                        ? 'Light Mode'
+                        : 'Dark Mode',
+                    style: TextStyle(
+                        color: TextColorBlue, fontWeight: FontWeight.bold),
+                  ),
+                ),
+                Container(
                   padding:
                       const EdgeInsets.symmetric(vertical: 5, horizontal: 5),
                   child: Obx(() => Switch(
-                        value: themeController.currentTheme == ThemeMode.light,
-                        onChanged: (value) {
-                          themeController.switchTheme();
-                          Get.changeThemeMode(
-                              themeController.currentTheme.value);
-                          print(themeController.currentTheme.value);
-                        },
-                        activeColor: CustomTheme.white,
+                        value: themeController.isDark.value,
+                        // themeController.currentTheme == ThemeMode.light,
+                        onChanged: (value) => themeController.ChangeMode(),
+
+                        //(value) {
+                        //   themeController.switchTheme();
+                        //   Get.changeThemeMode(
+                        //       themeController.currentTheme.value);
+                        //   print(themeController.currentTheme.value);
+                        // },
+                        activeColor: CustomTheme.lightThemeColor,
                       )),
-                )
+                  //Obx(() => Switch(
+                  //       value: themeController.currentTheme == ThemeMode.light,
+                  //       onChanged: (value) {
+                  //         themeController.switchTheme();
+                  //         Get.changeThemeMode(
+                  //             themeController.currentTheme.value);
+                  //         print(themeController.currentTheme.value);
+                  //       },
+                  //       activeColor: CustomTheme.lightThemeColor,
+                  //     )),
+                ),
               ],
             ),
+            SizedBox(height: 20),
             Row(children: [
               // SizedBox(height: 10),
               Padding(

@@ -16,11 +16,13 @@ import 'discussions.dart';
 
 class DashboardCleanContent extends StatelessWidget {
   DashboardCleanContent({Key? key}) : super(key: key);
-  final themeController = Get.put(GetThemeController());
 
   @override
   Widget build(BuildContext context) {
+    final themeController = Get.put(GetThemeController());
+
     return Container(
+      // key: themeController.scaffoldKey,
       child: SafeArea(
         child: SingleChildScrollView(
           padding: EdgeInsets.all(appPadding),
@@ -45,21 +47,21 @@ class DashboardCleanContent extends StatelessWidget {
                             ),
 
                             //Users(),
-                            if (Responsive.isMobile(context))
+                            if (themeController.Mobile(context))
                               SizedBox(
                                 height: appPadding,
                               ),
-                            if (Responsive.isMobile(context))
+                            if (themeController.Mobile(context))
                               // Discussions(), ->> tampilan profil user saat mobile
                               Text('ini data discussion mobile'),
                           ],
                         ),
                       ),
-                      if (!Responsive.isMobile(context))
+                      if (!themeController.Mobile(context))
                         SizedBox(
                           width: appPadding,
                         ),
-                      if (!Responsive.isMobile(context))
+                      if (!themeController.Mobile(context))
                         Expanded(
                           flex: 2,
                           child: Text('ini data disscution desktop'),
@@ -79,14 +81,14 @@ class DashboardCleanContent extends StatelessWidget {
                             ),
                             Row(
                               children: [
-                                if (!Responsive.isMobile(context))
+                                if (!themeController.Mobile(context))
                                   Expanded(
                                     child: Text(
                                         'Ini Text Top Referals Desktop/tablet'),
                                     // child: TopReferals(),
                                     flex: 2,
                                   ),
-                                if (!Responsive.isMobile(context))
+                                if (!themeController.Mobile(context))
                                   SizedBox(
                                     width: appPadding,
                                   ),
@@ -100,28 +102,28 @@ class DashboardCleanContent extends StatelessWidget {
                             SizedBox(
                               height: appPadding,
                             ),
-                            if (Responsive.isMobile(context))
+                            if (themeController.Mobile(context))
                               SizedBox(
                                 height: appPadding,
                               ),
-                            if (Responsive.isMobile(context))
+                            if (themeController.Mobile(context))
                               Text('ini Top Referals Mobile'),
                             // TopReferals(),
-                            if (Responsive.isMobile(context))
+                            if (themeController.Mobile(context))
                               SizedBox(
                                 height: appPadding,
                               ),
-                            if (Responsive.isMobile(context))
+                            if (themeController.Mobile(context))
                               Text('Ini Users By Device Mobile'),
                             // UsersByDevice(),
                           ],
                         ),
                       ),
-                      if (!Responsive.isMobile(context))
+                      if (!themeController.Mobile(context))
                         SizedBox(
                           width: appPadding,
                         ),
-                      if (!Responsive.isMobile(context))
+                      if (!themeController.Mobile(context))
                         Expanded(
                             flex: 2, child: Text('Ini Users by Device Dekstop')
                             // child: UsersByDevice(),

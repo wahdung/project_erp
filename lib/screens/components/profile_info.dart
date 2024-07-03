@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:get/get.dart';
+import 'package:hover_widget/hover_widget.dart';
+import 'package:project_erp/controllers/themeController.dart';
 import 'package:provider/provider.dart';
 import 'package:project_erp/constants/constants.dart';
 import 'package:project_erp/constants/responsive.dart';
@@ -7,6 +10,7 @@ import 'package:project_erp/controllers/controller.dart';
 
 class ProfileInfo extends StatelessWidget {
   ProfileInfo({Key? key}) : super(key: key);
+  final themeController = Get.put(GetThemeController());
 
   @override
   Widget build(BuildContext context) {
@@ -16,12 +20,16 @@ class ProfileInfo extends StatelessWidget {
           padding: const EdgeInsets.all(appPadding),
           child: Stack(
             children: [
-              IconButton(
-                onPressed: context.read<Controller>().controlMenu,
-                icon: SvgPicture.asset(
-                  "icons/Bell.svg",
-                  height: 25,
-                  color: Theme.of(context).hoverColor,
+              HoverWidget(
+                child: IconButton(
+                  onPressed: themeController.openDrawer,
+                  icon: SvgPicture.asset(
+                    "icons/Bell.svg",
+                    height: 25,
+                    color: themeController.currentTheme == ThemeMode.light
+                        ? TextColorBlue
+                        : Colors.white,
+                  ),
                 ),
               ),
               Positioned(
@@ -62,7 +70,9 @@ class ProfileInfo extends StatelessWidget {
                   child: Text(
                     'Hii, Gungwah',
                     style: TextStyle(
-                      color: Theme.of(context).hoverColor,
+                      color: themeController.currentTheme == ThemeMode.light
+                          ? TextColorBlue
+                          : Colors.white,
                       fontWeight: FontWeight.w800,
                     ),
                   ),

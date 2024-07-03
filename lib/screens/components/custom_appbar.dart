@@ -19,10 +19,12 @@ class CustomAppbar extends StatelessWidget {
       children: [
         if (!Responsive.isDesktop(context))
           IconButton(
-            onPressed: context.read<Controller>().controlMenu,
+            onPressed: themeController.openDrawer,
             icon: Icon(
               Icons.menu,
-              color: Theme.of(context).hoverColor,
+              color: themeController.currentTheme == ThemeMode.light
+                  ? TextColorBlue
+                  : Colors.white,
             ),
           ),
         Expanded(
@@ -33,12 +35,16 @@ class CustomAppbar extends StatelessWidget {
         ),
         if (!Responsive.isMobile(context))
           Obx(() => Switch(
-                value: themeController.currentTheme == ThemeMode.light,
-                onChanged: (value) {
-                  themeController.switchTheme();
-                  Get.changeThemeMode(themeController.currentTheme.value);
-                  print(themeController.currentTheme.value);
-                },
+                value: themeController.isDark.value,
+                // themeController.currentTheme == ThemeMode.light,
+                onChanged: (value) => themeController.ChangeMode(),
+
+                //(value) {
+                //   themeController.switchTheme();
+                //   Get.changeThemeMode(
+                //       themeController.currentTheme.value);
+                //   print(themeController.currentTheme.value);
+                // },
                 activeColor: CustomTheme.lightThemeColor,
               )),
         ProfileInfo()

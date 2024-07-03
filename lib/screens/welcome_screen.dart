@@ -1,19 +1,18 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hover_widget/hover_widget.dart';
 import 'package:project_erp/constants/constants.dart';
 import 'package:project_erp/constants/responsive.dart';
-import 'package:project_erp/controllers/controller.dart';
 import 'package:project_erp/controllers/themeController.dart';
+import 'package:project_erp/screens/components/Login.dart';
 import 'package:project_erp/screens/components/dashboard_clean_content.dart';
 import 'package:project_erp/screens/components/dashboard_content.dart';
 import 'package:project_erp/screens/components/login_content.dart';
 import 'package:project_erp/screens/components/theme.dart';
+import 'package:project_erp/screens/dash_board_clean_screen.dart';
 import 'package:project_erp/screens/login_screen.dart';
 import 'package:project_erp/constants/responsive.dart';
 
@@ -37,14 +36,16 @@ import 'package:provider/provider.dart';
 //   //   MaterialPageRoute(builder: (context) => const LoginScreen()),
 //   // );
 //   n
-// }
+void toLogin() {
+  Get.toNamed('/login');
+} // }
 
 class WelcomeScreen extends StatelessWidget {
   WelcomeScreen({Key? key}) : super(key: key);
-  final themeController = Get.put(GetThemeController());
 
   @override
   Widget build(BuildContext context) {
+    final themeController = Get.put(GetThemeController());
     // TODO: implement build
     return Container(
       child: Scaffold(
@@ -56,7 +57,7 @@ class WelcomeScreen extends StatelessWidget {
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  if (Responsive.isDesktop(context))
+                  if (themeController.Desktop(context))
                     Text(
                       "Welcome To",
                       textAlign: TextAlign.center,
@@ -65,12 +66,12 @@ class WelcomeScreen extends StatelessWidget {
                           fontSize: 20,
                           color: TextColorBlue),
                     ),
-                  if (!Responsive.isDesktop(context))
+                  if (!themeController.Desktop(context))
                     Text(
                       "Welcome To",
                       textAlign: TextAlign.center,
                       style: TextStyle(
-                          fontWeight: FontWeight.bold,
+                          fontWeight: FontWeight.w900,
                           fontSize: 15,
                           color: TextColorBlue),
                     ),
@@ -79,14 +80,14 @@ class WelcomeScreen extends StatelessWidget {
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  if (Responsive.isDesktop(context))
+                  if (themeController.Desktop(context))
                     Text("MAHAPUTRA GROUP",
                         textAlign: TextAlign.center,
                         style: TextStyle(
                             fontWeight: FontWeight.bold,
                             fontSize: 50,
                             color: TextColorBlue)),
-                  if (!Responsive.isDesktop(context))
+                  if (!themeController.Desktop(context))
                     Text("MAHAPUTRA GROUP",
                         textAlign: TextAlign.center,
                         style: TextStyle(
@@ -95,28 +96,28 @@ class WelcomeScreen extends StatelessWidget {
                             color: TextColorBlue)),
                 ],
               ),
-              if (Responsive.isDesktop(context))
+              if (themeController.Desktop(context))
                 Padding(padding: new EdgeInsets.only(bottom: 80)),
-              if (Responsive.isTablet(context))
+              if (themeController.Tablet(context))
                 Padding(padding: new EdgeInsets.only(bottom: 50)),
-              if (Responsive.isMobile(context))
-                Padding(padding: new EdgeInsets.only(bottom: 60)),
+              if (themeController.Mobile(context))
+                Padding(padding: new EdgeInsets.only(bottom: 30)),
 
-              Row(
-                children: [
-                  Obx(() => Switch(
-                        value: themeController.currentTheme == ThemeMode.light,
-                        onChanged: (value) {
-                          themeController.switchTheme();
-                          Get.changeThemeMode(
-                              themeController.currentTheme.value);
-                          print(themeController.currentTheme.value);
-                        },
-                        activeColor: CustomTheme.white,
-                      ))
-                ],
-              ),
-              if (Responsive.isMobile(context))
+              // Row(
+              //   children: [
+              //     Obx(() => Switch(
+              //           value: themeController.currentTheme == ThemeMode.light,
+              //           onChanged: (value) {
+              //             themeController.switchTheme();
+              //             Get.changeThemeMode(
+              //                 themeController.currentTheme.value);
+              //             print(themeController.currentTheme.value);
+              //           },
+              //           activeColor: CustomTheme.white,
+              //         ))
+              //   ],
+              // ),
+              if (themeController.Mobile(context))
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
@@ -131,11 +132,7 @@ class WelcomeScreen extends StatelessWidget {
                         backgroundColor: Theme.of(context).cardColor,
                         hoverColor: Theme.of(context).hoverColor,
                         onPressed: () {
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (BuildContext context) =>
-                                      LoginScreen()));
+                          toLogin();
                         },
                         child: Image.asset('/images/logompe.png'),
                       )),
@@ -151,11 +148,7 @@ class WelcomeScreen extends StatelessWidget {
                         backgroundColor: Theme.of(context).cardColor,
                         hoverColor: Theme.of(context).hoverColor,
                         onPressed: () {
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (BuildContext context) =>
-                                      LoginScreen()));
+                          toLogin();
                         },
                         child: Image.asset('/images/dwiputra.png'),
                       )),
@@ -165,11 +158,11 @@ class WelcomeScreen extends StatelessWidget {
                     ),
                   ],
                 ),
-              if (Responsive.isMobile(context))
+              if (themeController.Mobile(context))
                 SizedBox(
                   height: 25,
                 ),
-              if (Responsive.isMobile(context))
+              if (themeController.Mobile(context))
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
@@ -184,11 +177,7 @@ class WelcomeScreen extends StatelessWidget {
                         backgroundColor: Theme.of(context).cardColor,
                         hoverColor: Theme.of(context).hoverColor,
                         onPressed: () {
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (BuildContext context) =>
-                                      LoginScreen()));
+                          toLogin();
                         },
                         child: Image.asset('/images/rajaniaga.png'),
                       )),
@@ -204,11 +193,7 @@ class WelcomeScreen extends StatelessWidget {
                         backgroundColor: Theme.of(context).cardColor,
                         hoverColor: Theme.of(context).hoverColor,
                         onPressed: () {
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (BuildContext context) =>
-                                      LoginScreen()));
+                          toLogin();
                         },
                         child: Image.asset('/images/golden.png'),
                       )),
@@ -218,11 +203,11 @@ class WelcomeScreen extends StatelessWidget {
                     ),
                   ],
                 ),
-              if (Responsive.isMobile(context))
+              if (themeController.Mobile(context))
                 SizedBox(
                   height: 25,
                 ),
-              if (Responsive.isMobile(context))
+              if (themeController.Mobile(context))
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
@@ -237,11 +222,7 @@ class WelcomeScreen extends StatelessWidget {
                         backgroundColor: Theme.of(context).cardColor,
                         hoverColor: Theme.of(context).hoverColor,
                         onPressed: () {
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (BuildContext context) =>
-                                      LoginScreen()));
+                          toLogin();
                         },
                         child: Image.asset('/images/alamlangit.png'),
                       )),
@@ -257,11 +238,7 @@ class WelcomeScreen extends StatelessWidget {
                         backgroundColor: Theme.of(context).cardColor,
                         hoverColor: Theme.of(context).hoverColor,
                         onPressed: () {
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (BuildContext context) =>
-                                      LoginScreen()));
+                          toLogin();
                         },
                         child: Image.asset('/images/blanjablanja.png'),
                       )),
@@ -271,11 +248,11 @@ class WelcomeScreen extends StatelessWidget {
                     ),
                   ],
                 ),
-              if (Responsive.isMobile(context))
+              if (themeController.Mobile(context))
                 SizedBox(
                   height: 25,
                 ),
-              if (Responsive.isMobile(context))
+              if (themeController.Mobile(context))
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
@@ -290,11 +267,7 @@ class WelcomeScreen extends StatelessWidget {
                         backgroundColor: Theme.of(context).cardColor,
                         hoverColor: Theme.of(context).hoverColor,
                         onPressed: () {
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (BuildContext context) =>
-                                      LoginScreen()));
+                          toLogin();
                         },
                         child: Image.asset('/images/koperasi.png'),
                       )),
@@ -310,11 +283,7 @@ class WelcomeScreen extends StatelessWidget {
                         backgroundColor: Theme.of(context).cardColor,
                         hoverColor: Theme.of(context).hoverColor,
                         onPressed: () {
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (BuildContext context) =>
-                                      LoginScreen()));
+                          toLogin();
                         },
                         child: Image.asset('/images/hrm.png'),
                       )),
@@ -324,7 +293,7 @@ class WelcomeScreen extends StatelessWidget {
                     ),
                   ],
                 ),
-              if (Responsive.isDesktop(context)) // row desktop
+              if (themeController.Desktop(context)) // row desktop
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
@@ -339,11 +308,7 @@ class WelcomeScreen extends StatelessWidget {
                         backgroundColor: Theme.of(context).cardColor,
                         hoverColor: Theme.of(context).hoverColor,
                         onPressed: () {
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (BuildContext context) =>
-                                      LoginScreen()));
+                          toLogin();
                         },
                         child: Image.asset('/images/logompe.png'),
                       )),
@@ -359,11 +324,7 @@ class WelcomeScreen extends StatelessWidget {
                         backgroundColor: Theme.of(context).cardColor,
                         hoverColor: Theme.of(context).hoverColor,
                         onPressed: () {
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (BuildContext context) =>
-                                      LoginScreen()));
+                          toLogin();
                         },
                         child: Image.asset('/images/dwiputra.png'),
                       )),
@@ -379,11 +340,7 @@ class WelcomeScreen extends StatelessWidget {
                         backgroundColor: Theme.of(context).cardColor,
                         hoverColor: Theme.of(context).hoverColor,
                         onPressed: () {
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (BuildContext context) =>
-                                      LoginScreen()));
+                          toLogin();
                         },
                         child: Image.asset('/images/rajaniaga.png'),
                       )),
@@ -399,11 +356,7 @@ class WelcomeScreen extends StatelessWidget {
                         backgroundColor: Theme.of(context).cardColor,
                         hoverColor: Theme.of(context).hoverColor,
                         onPressed: () {
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (BuildContext context) =>
-                                      LoginScreen()));
+                          toLogin();
                         },
                         child: Image.asset('/images/golden.png'),
                       )),
@@ -413,9 +366,9 @@ class WelcomeScreen extends StatelessWidget {
                     ),
                   ],
                 ),
-              if (Responsive.isDesktop(context))
+              if (themeController.Desktop(context))
                 SizedBox(width: 50, height: 50),
-              if (Responsive.isDesktop(context))
+              if (themeController.Desktop(context))
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
@@ -430,11 +383,7 @@ class WelcomeScreen extends StatelessWidget {
                         backgroundColor: Theme.of(context).cardColor,
                         hoverColor: Theme.of(context).hoverColor,
                         onPressed: () {
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (BuildContext context) =>
-                                      LoginScreen()));
+                          toLogin();
                         },
                         child: Image.asset('/images/alamlangit.png'),
                       )),
@@ -450,11 +399,7 @@ class WelcomeScreen extends StatelessWidget {
                         backgroundColor: Theme.of(context).cardColor,
                         hoverColor: Theme.of(context).hoverColor,
                         onPressed: () {
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (BuildContext context) =>
-                                      LoginScreen()));
+                          toLogin();
                         },
                         child: Image.asset('/images/blanjablanja.png'),
                       )),
@@ -470,11 +415,7 @@ class WelcomeScreen extends StatelessWidget {
                         backgroundColor: Theme.of(context).cardColor,
                         hoverColor: Theme.of(context).hoverColor,
                         onPressed: () {
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (BuildContext context) =>
-                                      LoginScreen()));
+                          toLogin();
                         },
                         child: Image.asset('/images/koperasi.png'),
                       )),
@@ -490,11 +431,7 @@ class WelcomeScreen extends StatelessWidget {
                         backgroundColor: Theme.of(context).cardColor,
                         hoverColor: Theme.of(context).hoverColor,
                         onPressed: () {
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (BuildContext context) =>
-                                      LoginScreen()));
+                          toLogin();
                         },
                         child: Image.asset('/images/hrm.png'),
                       )),
@@ -504,7 +441,7 @@ class WelcomeScreen extends StatelessWidget {
                     ),
                   ],
                 ),
-              if (Responsive.isTablet(context)) // row tablet
+              if (themeController.Tablet(context)) // row tablet
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
@@ -519,11 +456,7 @@ class WelcomeScreen extends StatelessWidget {
                         backgroundColor: Theme.of(context).cardColor,
                         hoverColor: Theme.of(context).hoverColor,
                         onPressed: () {
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (BuildContext context) =>
-                                      LoginScreen()));
+                          toLogin();
                         },
                         child: Image.asset('/images/logompe.png'),
                       )),
@@ -539,11 +472,7 @@ class WelcomeScreen extends StatelessWidget {
                         backgroundColor: Theme.of(context).cardColor,
                         hoverColor: Theme.of(context).hoverColor,
                         onPressed: () {
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (BuildContext context) =>
-                                      LoginScreen()));
+                          toLogin();
                         },
                         child: Image.asset('/images/dwiputra.png'),
                       )),
@@ -559,11 +488,7 @@ class WelcomeScreen extends StatelessWidget {
                         backgroundColor: Theme.of(context).cardColor,
                         hoverColor: Theme.of(context).hoverColor,
                         onPressed: () {
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (BuildContext context) =>
-                                      LoginScreen()));
+                          toLogin();
                         },
                         child: Image.asset('/images/rajaniaga.png'),
                       )),
@@ -593,12 +518,12 @@ class WelcomeScreen extends StatelessWidget {
                     // ),
                   ],
                 ),
-              if (Responsive.isTablet(context))
+              if (themeController.Tablet(context))
                 SizedBox(
                   width: 50,
                   height: 50,
                 ),
-              if (Responsive.isTablet(context)) // row tablet
+              if (themeController.Tablet(context)) // row tablet
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
@@ -613,11 +538,7 @@ class WelcomeScreen extends StatelessWidget {
                         backgroundColor: Theme.of(context).cardColor,
                         hoverColor: Theme.of(context).hoverColor,
                         onPressed: () {
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (BuildContext context) =>
-                                      LoginScreen()));
+                          toLogin();
                         },
                         child: Image.asset('/images/golden.png'),
                       )),
@@ -633,11 +554,7 @@ class WelcomeScreen extends StatelessWidget {
                         backgroundColor: Theme.of(context).cardColor,
                         hoverColor: Theme.of(context).hoverColor,
                         onPressed: () {
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (BuildContext context) =>
-                                      LoginScreen()));
+                          toLogin();
                         },
                         child: Image.asset('/images/alamlangit.png'),
                       )),
@@ -653,11 +570,7 @@ class WelcomeScreen extends StatelessWidget {
                         backgroundColor: Theme.of(context).cardColor,
                         hoverColor: Theme.of(context).hoverColor,
                         onPressed: () {
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (BuildContext context) =>
-                                      LoginScreen()));
+                          toLogin();
                         },
                         child: Image.asset('/images/blanjablanja.png'),
                       )),
@@ -687,12 +600,12 @@ class WelcomeScreen extends StatelessWidget {
                     // ),
                   ],
                 ),
-              if (Responsive.isTablet(context))
+              if (themeController.Tablet(context))
                 SizedBox(
                   width: 50,
                   height: 50,
                 ),
-              if (Responsive.isTablet(context)) // row tablet
+              if (themeController.Tablet(context)) // row tablet
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
@@ -707,11 +620,7 @@ class WelcomeScreen extends StatelessWidget {
                         backgroundColor: Theme.of(context).cardColor,
                         hoverColor: Theme.of(context).hoverColor,
                         onPressed: () {
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (BuildContext context) =>
-                                      LoginScreen()));
+                          toLogin();
                         },
                         child: Image.asset('/images/koperasi.png'),
                       )),
@@ -727,11 +636,7 @@ class WelcomeScreen extends StatelessWidget {
                         backgroundColor: Theme.of(context).cardColor,
                         hoverColor: Theme.of(context).hoverColor,
                         onPressed: () {
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (BuildContext context) =>
-                                      LoginScreen()));
+                          Get.to(LoginScreen());
                         },
                         child: Image.asset('/images/hrm.png'),
                       )),
@@ -781,6 +686,50 @@ class WelcomeScreen extends StatelessWidget {
                     // ),
                   ],
                 ),
+              if (!themeController.Desktop(context)) SizedBox(height: 40),
+              if (themeController.Desktop(context)) SizedBox(height: 150),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Container(
+                    child: Text(
+                      themeController.currentTheme == ThemeMode.light
+                          ? 'Light Mode'
+                          : 'Dark Mode',
+                      style: TextStyle(
+                          color: TextColorBlue, fontWeight: FontWeight.bold),
+                    ),
+                  ),
+                  Container(
+                    padding:
+                        const EdgeInsets.symmetric(vertical: 5, horizontal: 5),
+                    child: Obx(() => Switch(
+                          value: themeController.isDark.value,
+                          // themeController.currentTheme == ThemeMode.light,
+                          onChanged: (value) => themeController.ChangeMode(),
+
+                          //(value) {
+                          //   themeController.switchTheme();
+                          //   Get.changeThemeMode(
+                          //       themeController.currentTheme.value);
+                          //   print(themeController.currentTheme.value);
+                          // },
+                          activeColor: CustomTheme.lightThemeColor,
+                        )),
+                  ),
+                ],
+              ),
+
+              Row(mainAxisAlignment: MainAxisAlignment.center, children: [
+                Container(
+                  child:
+                      // SizedBox(height: 10),
+                      Padding(
+                    padding: EdgeInsets.only(bottom: 20),
+                    child: Text('© Mahaputra Group 2024'),
+                  ),
+                ),
+              ])
               // SizedBox(
               //   width: 50,
               // ),

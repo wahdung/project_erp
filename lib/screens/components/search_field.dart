@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:project_erp/constants/constants.dart';
+import 'package:project_erp/controllers/themeController.dart';
 
 class SearchField extends StatelessWidget {
-  const SearchField({Key? key}) : super(key: key);
+  SearchField({Key? key}) : super(key: key);
+  final themeController = Get.put(GetThemeController());
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +24,9 @@ class SearchField extends StatelessWidget {
               borderRadius: BorderRadius.circular(10)),
           prefixIcon: Icon(
             Icons.search,
-            color: Theme.of(context).hoverColor,
+            color: themeController.currentTheme == ThemeMode.light
+                ? TextColorBlue
+                : Colors.white,
           )),
     );
   }

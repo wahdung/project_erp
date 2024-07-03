@@ -5,7 +5,7 @@ class Responsive extends StatelessWidget {
   final Widget? tablet;
   final Widget desktop;
 
-  const Responsive({
+  Responsive({
     Key? key,
     required this.mobile,
     this.tablet,
