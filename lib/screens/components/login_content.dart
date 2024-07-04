@@ -16,10 +16,11 @@ import 'discussions.dart';
 
 class LoginContent extends StatelessWidget {
   LoginContent({Key? key}) : super(key: key);
-  final themeController = Get.put(GetThemeController());
+  // final themeController = Get.put(GetThemeController());
 
   @override
   Widget build(BuildContext context) {
+    // final themeController = Get.find<GetThemeController>();
     return Container(
       constraints: const BoxConstraints(minHeight: 400, minWidth: 450),
       padding: EdgeInsets.all(appPadding),

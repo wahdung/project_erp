@@ -37,7 +37,7 @@ import 'package:provider/provider.dart';
 //   // );
 //   n
 void toLogin() {
-  Get.toNamed('/login');
+  Get.offAndToNamed('/login');
 } // }
 
 class WelcomeScreen extends StatelessWidget {
@@ -45,15 +45,21 @@ class WelcomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final themeController = Get.put(GetThemeController());
+    final themeController = Get.find<GetThemeController>();
     // TODO: implement build
     return Container(
       child: Scaffold(
+        // key: themeController.scaffoldKey,
         body: Center(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: <Widget>[
-              Padding(padding: new EdgeInsets.only(top: 80)),
+              if (themeController.Mobile(context))
+                Padding(padding: new EdgeInsets.only(top: 40)),
+              if (themeController.Desktop(context))
+                Padding(padding: new EdgeInsets.only(top: 110)),
+              if (themeController.Tablet(context))
+                Padding(padding: new EdgeInsets.only(top: 50)),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
@@ -129,6 +135,7 @@ class WelcomeScreen extends StatelessWidget {
                       height: 125,
                       child: HoverWidget(
                           child: FloatingActionButton(
+                        heroTag: UniqueKey(),
                         backgroundColor: Theme.of(context).cardColor,
                         hoverColor: Theme.of(context).hoverColor,
                         onPressed: () {
@@ -145,6 +152,7 @@ class WelcomeScreen extends StatelessWidget {
                       height: 125,
                       child: HoverWidget(
                           child: FloatingActionButton(
+                        heroTag: UniqueKey(),
                         backgroundColor: Theme.of(context).cardColor,
                         hoverColor: Theme.of(context).hoverColor,
                         onPressed: () {
@@ -174,6 +182,7 @@ class WelcomeScreen extends StatelessWidget {
                       height: 125,
                       child: HoverWidget(
                           child: FloatingActionButton(
+                        heroTag: UniqueKey(),
                         backgroundColor: Theme.of(context).cardColor,
                         hoverColor: Theme.of(context).hoverColor,
                         onPressed: () {
@@ -190,6 +199,7 @@ class WelcomeScreen extends StatelessWidget {
                       height: 125,
                       child: HoverWidget(
                           child: FloatingActionButton(
+                        heroTag: UniqueKey(),
                         backgroundColor: Theme.of(context).cardColor,
                         hoverColor: Theme.of(context).hoverColor,
                         onPressed: () {
@@ -219,6 +229,7 @@ class WelcomeScreen extends StatelessWidget {
                       height: 125,
                       child: HoverWidget(
                           child: FloatingActionButton(
+                        heroTag: UniqueKey(),
                         backgroundColor: Theme.of(context).cardColor,
                         hoverColor: Theme.of(context).hoverColor,
                         onPressed: () {
@@ -235,6 +246,7 @@ class WelcomeScreen extends StatelessWidget {
                       height: 125,
                       child: HoverWidget(
                           child: FloatingActionButton(
+                        heroTag: UniqueKey(),
                         backgroundColor: Theme.of(context).cardColor,
                         hoverColor: Theme.of(context).hoverColor,
                         onPressed: () {
@@ -264,6 +276,7 @@ class WelcomeScreen extends StatelessWidget {
                       height: 125,
                       child: HoverWidget(
                           child: FloatingActionButton(
+                        heroTag: UniqueKey(),
                         backgroundColor: Theme.of(context).cardColor,
                         hoverColor: Theme.of(context).hoverColor,
                         onPressed: () {
@@ -280,6 +293,7 @@ class WelcomeScreen extends StatelessWidget {
                       height: 125,
                       child: HoverWidget(
                           child: FloatingActionButton(
+                        heroTag: UniqueKey(),
                         backgroundColor: Theme.of(context).cardColor,
                         hoverColor: Theme.of(context).hoverColor,
                         onPressed: () {
@@ -305,6 +319,7 @@ class WelcomeScreen extends StatelessWidget {
                       height: 150,
                       child: HoverWidget(
                           child: FloatingActionButton(
+                        heroTag: UniqueKey(),
                         backgroundColor: Theme.of(context).cardColor,
                         hoverColor: Theme.of(context).hoverColor,
                         onPressed: () {
@@ -321,6 +336,7 @@ class WelcomeScreen extends StatelessWidget {
                       height: 150,
                       child: HoverWidget(
                           child: FloatingActionButton(
+                        heroTag: UniqueKey(),
                         backgroundColor: Theme.of(context).cardColor,
                         hoverColor: Theme.of(context).hoverColor,
                         onPressed: () {
@@ -337,6 +353,7 @@ class WelcomeScreen extends StatelessWidget {
                       height: 150,
                       child: HoverWidget(
                           child: FloatingActionButton(
+                        heroTag: UniqueKey(),
                         backgroundColor: Theme.of(context).cardColor,
                         hoverColor: Theme.of(context).hoverColor,
                         onPressed: () {
@@ -353,6 +370,7 @@ class WelcomeScreen extends StatelessWidget {
                       height: 150,
                       child: HoverWidget(
                           child: FloatingActionButton(
+                        heroTag: UniqueKey(),
                         backgroundColor: Theme.of(context).cardColor,
                         hoverColor: Theme.of(context).hoverColor,
                         onPressed: () {
@@ -380,6 +398,7 @@ class WelcomeScreen extends StatelessWidget {
                       height: 150,
                       child: HoverWidget(
                           child: FloatingActionButton(
+                        heroTag: UniqueKey(),
                         backgroundColor: Theme.of(context).cardColor,
                         hoverColor: Theme.of(context).hoverColor,
                         onPressed: () {
@@ -396,6 +415,7 @@ class WelcomeScreen extends StatelessWidget {
                       height: 150,
                       child: HoverWidget(
                           child: FloatingActionButton(
+                        heroTag: UniqueKey(),
                         backgroundColor: Theme.of(context).cardColor,
                         hoverColor: Theme.of(context).hoverColor,
                         onPressed: () {
@@ -412,6 +432,7 @@ class WelcomeScreen extends StatelessWidget {
                       height: 150,
                       child: HoverWidget(
                           child: FloatingActionButton(
+                        heroTag: UniqueKey(),
                         backgroundColor: Theme.of(context).cardColor,
                         hoverColor: Theme.of(context).hoverColor,
                         onPressed: () {
@@ -428,6 +449,7 @@ class WelcomeScreen extends StatelessWidget {
                       height: 150,
                       child: HoverWidget(
                           child: FloatingActionButton(
+                        heroTag: UniqueKey(),
                         backgroundColor: Theme.of(context).cardColor,
                         hoverColor: Theme.of(context).hoverColor,
                         onPressed: () {
@@ -453,6 +475,7 @@ class WelcomeScreen extends StatelessWidget {
                       height: 150,
                       child: HoverWidget(
                           child: FloatingActionButton(
+                        heroTag: UniqueKey(),
                         backgroundColor: Theme.of(context).cardColor,
                         hoverColor: Theme.of(context).hoverColor,
                         onPressed: () {
@@ -469,6 +492,7 @@ class WelcomeScreen extends StatelessWidget {
                       height: 150,
                       child: HoverWidget(
                           child: FloatingActionButton(
+                        heroTag: UniqueKey(),
                         backgroundColor: Theme.of(context).cardColor,
                         hoverColor: Theme.of(context).hoverColor,
                         onPressed: () {
@@ -485,6 +509,7 @@ class WelcomeScreen extends StatelessWidget {
                       height: 150,
                       child: HoverWidget(
                           child: FloatingActionButton(
+                        heroTag: UniqueKey(),
                         backgroundColor: Theme.of(context).cardColor,
                         hoverColor: Theme.of(context).hoverColor,
                         onPressed: () {
@@ -535,6 +560,7 @@ class WelcomeScreen extends StatelessWidget {
                       height: 150,
                       child: HoverWidget(
                           child: FloatingActionButton(
+                        heroTag: UniqueKey(),
                         backgroundColor: Theme.of(context).cardColor,
                         hoverColor: Theme.of(context).hoverColor,
                         onPressed: () {
@@ -551,6 +577,7 @@ class WelcomeScreen extends StatelessWidget {
                       height: 150,
                       child: HoverWidget(
                           child: FloatingActionButton(
+                        heroTag: UniqueKey(),
                         backgroundColor: Theme.of(context).cardColor,
                         hoverColor: Theme.of(context).hoverColor,
                         onPressed: () {
@@ -567,6 +594,7 @@ class WelcomeScreen extends StatelessWidget {
                       height: 150,
                       child: HoverWidget(
                           child: FloatingActionButton(
+                        heroTag: UniqueKey(),
                         backgroundColor: Theme.of(context).cardColor,
                         hoverColor: Theme.of(context).hoverColor,
                         onPressed: () {
@@ -617,6 +645,7 @@ class WelcomeScreen extends StatelessWidget {
                       height: 150,
                       child: HoverWidget(
                           child: FloatingActionButton(
+                        heroTag: UniqueKey(),
                         backgroundColor: Theme.of(context).cardColor,
                         hoverColor: Theme.of(context).hoverColor,
                         onPressed: () {
@@ -633,6 +662,7 @@ class WelcomeScreen extends StatelessWidget {
                       height: 150,
                       child: HoverWidget(
                           child: FloatingActionButton(
+                        heroTag: UniqueKey(),
                         backgroundColor: Theme.of(context).cardColor,
                         hoverColor: Theme.of(context).hoverColor,
                         onPressed: () {
@@ -686,14 +716,15 @@ class WelcomeScreen extends StatelessWidget {
                     // ),
                   ],
                 ),
-              if (!themeController.Desktop(context)) SizedBox(height: 40),
+              if (themeController.Mobile(context)) SizedBox(height: 30),
+              if (themeController.Tablet(context)) SizedBox(height: 60),
               if (themeController.Desktop(context)) SizedBox(height: 150),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Container(
                     child: Text(
-                      themeController.currentTheme == ThemeMode.light
+                      !themeController.currentTheme.value
                           ? 'Light Mode'
                           : 'Dark Mode',
                       style: TextStyle(
@@ -704,9 +735,9 @@ class WelcomeScreen extends StatelessWidget {
                     padding:
                         const EdgeInsets.symmetric(vertical: 5, horizontal: 5),
                     child: Obx(() => Switch(
-                          value: themeController.isDark.value,
+                          value: themeController.currentTheme.value,
                           // themeController.currentTheme == ThemeMode.light,
-                          onChanged: (value) => themeController.ChangeMode(),
+                          onChanged: (value) => themeController.switchTheme(),
 
                           //(value) {
                           //   themeController.switchTheme();
@@ -715,6 +746,10 @@ class WelcomeScreen extends StatelessWidget {
                           //   print(themeController.currentTheme.value);
                           // },
                           activeColor: CustomTheme.lightThemeColor,
+                          activeTrackColor:
+                              CustomTheme.lightThemeColor.withOpacity(0.5),
+                          inactiveThumbColor: CustomTheme.grey,
+                          inactiveTrackColor: CustomTheme.white,
                         )),
                   ),
                 ],
@@ -725,7 +760,7 @@ class WelcomeScreen extends StatelessWidget {
                   child:
                       // SizedBox(height: 10),
                       Padding(
-                    padding: EdgeInsets.only(bottom: 20),
+                    padding: EdgeInsets.only(bottom: 10),
                     child: Text('© Mahaputra Group 2024'),
                   ),
                 ),

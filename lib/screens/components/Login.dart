@@ -5,14 +5,14 @@ import 'package:hover_widget/hover_widget.dart';
 import 'package:project_erp/controllers/getController.dart';
 import 'package:project_erp/controllers/themeController.dart';
 import 'package:project_erp/screens/components/theme.dart';
+import 'package:project_erp/screens/welcome_screen.dart';
 import 'package:provider/provider.dart';
 import 'package:project_erp/controllers/controller.dart';
 import 'package:project_erp/screens/components/dashboard_clean_content.dart';
 import 'package:project_erp/screens/components/drawer_menu.dart';
 import 'package:project_erp/screens/dash_board_clean_screen.dart';
-import 'package:flutter/cupertino.dart';
+
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:project_erp/constants/constants.dart';
 
@@ -20,10 +20,11 @@ import 'bar_chart_users.dart';
 
 class Login extends StatelessWidget {
   Login({Key? key}) : super(key: key);
-  final themeController = Get.put(GetThemeController());
+  // final themeController = Get.put(GetThemeController());
 
   @override
   Widget build(BuildContext context) {
+    final themeController = Get.find<GetThemeController>();
     return Container(
       constraints: BoxConstraints(minHeight: 300, minWidth: 400),
       decoration: BoxDecoration(
@@ -65,17 +66,32 @@ class Login extends StatelessWidget {
                     child: SizedBox(
                   width: 300,
                   child: TextField(
-                    decoration: InputDecoration(
-                        icon: Icon(
-                          Icons.person,
-                          color: TextColorBlue,
-                        ),
-                        hintText: 'Username !',
-                        labelStyle: new TextStyle(
-                          color: TextColorBlue,
-                        )),
-                    maxLength: 12,
-                  ),
+                      style: TextStyle(
+                          color: themeController.currentTheme.value
+                              ? Colors.white
+                              : TextColorBlue,
+                          fontWeight: FontWeight.w700),
+                      decoration: InputDecoration(
+                          enabledBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(30.0),
+                              borderSide: BorderSide(
+                                  color: themeController.currentTheme.value
+                                      ? Colors.white
+                                      : Colors.black,
+                                  width: 1)),
+                          focusedBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(30.0),
+                              borderSide:
+                                  BorderSide(color: TextColorBlue, width: 3)),
+                          prefixIcon: Icon(
+                            Icons.person,
+                            color: TextColorBlue,
+                          ),
+                          labelText: 'Username',
+                          labelStyle: new TextStyle(
+                              color: TextColorBlue,
+                              fontWeight: FontWeight.bold)),
+                      maxLength: 18),
                 )
                     // Text('login untuk masuk sistem'),
 
@@ -85,20 +101,39 @@ class Login extends StatelessWidget {
             Row(
               children: [
                 SizedBox(
-                  height: 50,
+                  height: 100,
                 ),
                 Form(
                     child: SizedBox(
                   width: 300,
                   child: TextField(
+                    style: TextStyle(
+                        color: themeController.currentTheme.value
+                            ? Colors.white
+                            : TextColorBlue,
+                        fontWeight: FontWeight.w700),
                     obscureText: true,
                     decoration: InputDecoration(
-                        icon: Icon(
+                        // fillColor: TextColorBlue,
+                        // focusColor: TextColorBlue,
+                        enabledBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(30.0),
+                            borderSide: BorderSide(
+                                color: themeController.currentTheme.value
+                                    ? Colors.white
+                                    : Colors.black,
+                                width: 1)),
+                        focusedBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(30.0),
+                            borderSide:
+                                BorderSide(color: TextColorBlue, width: 3)),
+                        prefixIcon: Icon(
                           Icons.verified_user_sharp,
                           color: TextColorBlue,
                         ),
-                        hintText: 'Password !',
-                        labelStyle: new TextStyle(color: TextColorBlue)),
+                        labelText: 'Password',
+                        labelStyle: new TextStyle(
+                            color: TextColorBlue, fontWeight: FontWeight.bold)),
                     maxLength: 12,
                   ),
                 )
@@ -107,8 +142,7 @@ class Login extends StatelessWidget {
                     ),
               ],
             ),
-            SizedBox(height: 50),
-
+            SizedBox(height: 10),
             Row(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
@@ -154,10 +188,11 @@ class Login extends StatelessWidget {
                   ),
                   child: HoverWidget(
                       child: FloatingActionButton(
+                          heroTag: UniqueKey(),
                           backgroundColor: Theme.of(context).cardColor,
                           hoverColor: Theme.of(context).hoverColor,
                           onPressed: () {
-                            Get.toNamed('/dashboard');
+                            Get.offAndToNamed('/dashboard');
                           },
                           child: Text(
                             'Login',
@@ -185,6 +220,7 @@ class Login extends StatelessWidget {
                   ),
                   child: HoverWidget(
                       child: FloatingActionButton(
+                          heroTag: UniqueKey(),
                           backgroundColor: Theme.of(context).cardColor,
                           hoverColor: Theme.of(context).hoverColor,
                           onPressed: () {
@@ -216,10 +252,11 @@ class Login extends StatelessWidget {
                   ),
                   child: HoverWidget(
                       child: FloatingActionButton(
+                          heroTag: UniqueKey(),
                           backgroundColor: Theme.of(context).cardColor,
                           hoverColor: Theme.of(context).hoverColor,
                           onPressed: () {
-                            Get.back();
+                            Get.offAndToNamed('/welcome');
                           },
                           child: Text(
                             'Settings',
@@ -237,7 +274,7 @@ class Login extends StatelessWidget {
               children: [
                 Container(
                   child: Text(
-                    themeController.currentTheme == ThemeMode.light
+                    !themeController.currentTheme.value
                         ? 'Light Mode'
                         : 'Dark Mode',
                     style: TextStyle(
@@ -248,9 +285,9 @@ class Login extends StatelessWidget {
                   padding:
                       const EdgeInsets.symmetric(vertical: 5, horizontal: 5),
                   child: Obx(() => Switch(
-                        value: themeController.isDark.value,
+                        value: themeController.currentTheme.value,
                         // themeController.currentTheme == ThemeMode.light,
-                        onChanged: (value) => themeController.ChangeMode(),
+                        onChanged: (value) => themeController.switchTheme(),
 
                         //(value) {
                         //   themeController.switchTheme();
@@ -259,6 +296,10 @@ class Login extends StatelessWidget {
                         //   print(themeController.currentTheme.value);
                         // },
                         activeColor: CustomTheme.lightThemeColor,
+                        activeTrackColor:
+                            CustomTheme.lightThemeColor.withOpacity(0.5),
+                        inactiveThumbColor: CustomTheme.grey,
+                        inactiveTrackColor: CustomTheme.white,
                       )),
                   //Obx(() => Switch(
                   //       value: themeController.currentTheme == ThemeMode.light,

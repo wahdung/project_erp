@@ -10,10 +10,11 @@ import 'package:project_erp/controllers/controller.dart';
 
 class ProfileInfo extends StatelessWidget {
   ProfileInfo({Key? key}) : super(key: key);
-  final themeController = Get.put(GetThemeController());
+  // final themeController = Get.put(GetThemeController());
 
   @override
   Widget build(BuildContext context) {
+    final themeController = Get.find<GetThemeController>();
     return Row(
       children: [
         Padding(
@@ -26,7 +27,7 @@ class ProfileInfo extends StatelessWidget {
                   icon: SvgPicture.asset(
                     "icons/Bell.svg",
                     height: 25,
-                    color: themeController.currentTheme == ThemeMode.light
+                    color: !themeController.currentTheme.value
                         ? TextColorBlue
                         : Colors.white,
                   ),
@@ -46,38 +47,40 @@ class ProfileInfo extends StatelessWidget {
             ],
           ),
         ),
-        Container(
-          margin: EdgeInsets.only(left: appPadding),
-          padding: EdgeInsets.symmetric(
-            horizontal: appPadding,
-            vertical: appPadding / 2,
-          ),
-          child: Row(
-            children: [
-              ClipRRect(
-                child: Image.asset(
-                  'images/photo3.jpg',
-                  height: 38,
-                  width: 38,
-                  fit: BoxFit.cover,
-                ),
-                borderRadius: BorderRadius.circular(30),
-              ),
-              if (!Responsive.isMobile(context))
-                Padding(
-                  padding:
-                      const EdgeInsets.symmetric(horizontal: appPadding / 2),
-                  child: Text(
-                    'Hii, Gungwah',
-                    style: TextStyle(
-                      color: themeController.currentTheme == ThemeMode.light
-                          ? TextColorBlue
-                          : Colors.white,
-                      fontWeight: FontWeight.w800,
-                    ),
+        HoverWidget(
+          child: Container(
+            margin: EdgeInsets.only(left: appPadding),
+            padding: EdgeInsets.symmetric(
+              horizontal: appPadding,
+              vertical: appPadding / 2,
+            ),
+            child: Row(
+              children: [
+                ClipRRect(
+                  child: Image.asset(
+                    'images/photo3.jpg',
+                    height: 38,
+                    width: 38,
+                    fit: BoxFit.cover,
                   ),
-                )
-            ],
+                  borderRadius: BorderRadius.circular(30),
+                ),
+                if (!Responsive.isMobile(context))
+                  Padding(
+                    padding:
+                        const EdgeInsets.symmetric(horizontal: appPadding / 2),
+                    child: Text(
+                      'Hii, Gungwah',
+                      style: TextStyle(
+                        color: !themeController.currentTheme.value
+                            ? TextColorBlue
+                            : Colors.white,
+                        fontWeight: FontWeight.w800,
+                      ),
+                    ),
+                  )
+              ],
+            ),
           ),
         )
       ],

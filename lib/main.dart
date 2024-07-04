@@ -25,9 +25,23 @@ class MyApp extends StatelessWidget {
     return Obx(() => GetMaterialApp(
           title: 'Responsive Admin Dashboard',
           debugShowCheckedModeBanner: false,
-          theme: CustomTheme.lightTheme,
-          darkTheme: CustomTheme.darkTheme,
-          themeMode: themeController.theme,
+          theme:
+              // themeController.loadThemeFromBox()
+              themeController.currentTheme.value
+                  ? CustomTheme.darkTheme
+                  : CustomTheme.lightTheme,
+          // themeMode: themeController.currentTheme.value
+          //     ? ThemeMode.dark
+          //     : ThemeMode.light,
+          // darkTheme: CustomTheme.darkTheme,
+          //     theme: AppTheme.light,
+          // darkTheme: AppTheme.dark,
+          // themeMode: Get.find<ThemeController>().isDarkMode.value
+          //     ? ThemeMode.dark
+          //     : ThemeMode.light,
+          // theme: CustomTheme.lightTheme,
+          // darkTheme: CustomTheme.darkTheme,
+          // themeMode: themeController.theme,
           // theme: ThemeData(
           //     primarySwatch: Colors.blue,
           //     textTheme: GoogleFonts.poppinsTextTheme(
@@ -36,7 +50,10 @@ class MyApp extends StatelessWidget {
           initialRoute: '/welcome',
           getPages: [
             GetPage(name: '/welcome', page: () => WelcomeScreen()),
-            GetPage(name: '/login', page: () => LoginScreen()),
+            GetPage(
+                name: '/login',
+                page: () => LoginScreen(),
+                transition: Transition.zoom),
             GetPage(name: '/dashboard', page: () => DashboardCleanScreen()),
           ],
         ));

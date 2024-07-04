@@ -11,18 +11,19 @@ import 'package:provider/provider.dart';
 
 class CustomAppbar extends StatelessWidget {
   CustomAppbar({Key? key}) : super(key: key);
-  final themeController = Get.put(GetThemeController());
+  // final themeController = Get.put(GetThemeController());
 
   @override
   Widget build(BuildContext context) {
+    final themeController = Get.find<GetThemeController>();
     return Row(
       children: [
-        if (!Responsive.isDesktop(context))
+        if (!themeController.Desktop(context))
           IconButton(
             onPressed: themeController.openDrawer,
             icon: Icon(
               Icons.menu,
-              color: themeController.currentTheme == ThemeMode.light
+              color: !themeController.currentTheme.value
                   ? TextColorBlue
                   : Colors.white,
             ),
@@ -33,11 +34,11 @@ class CustomAppbar extends StatelessWidget {
         SizedBox(
           width: 20,
         ),
-        if (!Responsive.isMobile(context))
+        if (!themeController.Mobile(context))
           Obx(() => Switch(
-                value: themeController.isDark.value,
+                value: themeController.currentTheme.value,
                 // themeController.currentTheme == ThemeMode.light,
-                onChanged: (value) => themeController.ChangeMode(),
+                onChanged: (value) => themeController.switchTheme(),
 
                 //(value) {
                 //   themeController.switchTheme();
@@ -46,7 +47,23 @@ class CustomAppbar extends StatelessWidget {
                 //   print(themeController.currentTheme.value);
                 // },
                 activeColor: CustomTheme.lightThemeColor,
+                activeTrackColor: CustomTheme.lightThemeColor.withOpacity(0.5),
+                inactiveThumbColor: CustomTheme.grey,
+                inactiveTrackColor: CustomTheme.white,
               )),
+        // Obx(() => Switch(
+        //       value: themeController.isDark.value,
+        //       // themeController.currentTheme == ThemeMode.light,
+        //       onChanged: (value) => themeController.ChangeMode(),
+
+        //       //(value) {
+        //       //   themeController.switchTheme();
+        //       //   Get.changeThemeMode(
+        //       //       themeController.currentTheme.value);
+        //       //   print(themeController.currentTheme.value);
+        //       // },
+        //       activeColor: CustomTheme.lightThemeColor,
+        //     )),
         ProfileInfo()
       ],
     );

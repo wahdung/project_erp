@@ -84,5 +84,6 @@ class CustomTheme {
   static Color lightThemeColor = Colors.red,
       white = Colors.white,
       black = Colors.black,
-      darkThemeColor = Colors.yellow;
+      darkThemeColor = Colors.yellow,
+      grey = Colors.grey;
 }

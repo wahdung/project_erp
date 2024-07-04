@@ -5,10 +5,11 @@ import 'package:project_erp/controllers/themeController.dart';
 
 class SearchField extends StatelessWidget {
   SearchField({Key? key}) : super(key: key);
-  final themeController = Get.put(GetThemeController());
+  // final themeController = Get.put(GetThemeController());
 
   @override
   Widget build(BuildContext context) {
+    final themeController = Get.find<GetThemeController>();
     return TextField(
       decoration: InputDecoration(
           hoverColor: Theme.of(context).cardColor,
@@ -24,7 +25,7 @@ class SearchField extends StatelessWidget {
               borderRadius: BorderRadius.circular(10)),
           prefixIcon: Icon(
             Icons.search,
-            color: themeController.currentTheme == ThemeMode.light
+            color: !themeController.currentTheme.value
                 ? TextColorBlue
                 : Colors.white,
           )),

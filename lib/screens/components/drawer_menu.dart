@@ -16,10 +16,11 @@ import 'package:project_erp/controllers/controller.dart';
 
 class DrawerMenu extends StatelessWidget {
   DrawerMenu({Key? key}) : super(key: key);
-  final themeController = Get.put(GetThemeController());
+  // final themeController = Get.put(GetThemeController());
 
   @override
   Widget build(BuildContext context) {
+    final themeController = Get.find<GetThemeController>();
     return Drawer(
       child: ListView(
         children: [
@@ -94,7 +95,9 @@ class DrawerMenu extends StatelessWidget {
                   child: DrawerListTile(
                       title: 'Customer',
                       svgSrc: 'icons/Subscribers.svg',
-                      colorIcon: grey,
+                      colorIcon: !themeController.currentTheme.value
+                          ? grey
+                          : TextColorBlue.withOpacity(0.7),
                       tap: () {
                         print('You Click Customer');
                       }),
@@ -106,7 +109,9 @@ class DrawerMenu extends StatelessWidget {
                   child: DrawerListTile(
                       title: 'Partner',
                       svgSrc: 'icons/Subscribers.svg',
-                      colorIcon: grey,
+                      colorIcon: !themeController.currentTheme.value
+                          ? grey
+                          : TextColorBlue.withOpacity(0.7),
                       tap: () {
                         print('You Click Partner');
                       }),
@@ -118,7 +123,9 @@ class DrawerMenu extends StatelessWidget {
                   child: DrawerListTile(
                       title: 'Supplier',
                       svgSrc: 'icons/Subscribers.svg',
-                      colorIcon: grey,
+                      colorIcon: !themeController.currentTheme.value
+                          ? grey
+                          : TextColorBlue.withOpacity(0.7),
                       tap: () {
                         print('You Click Supplier');
                       }),
@@ -130,7 +137,9 @@ class DrawerMenu extends StatelessWidget {
                   child: DrawerListTile(
                       title: 'Karyawan',
                       svgSrc: 'icons/Subscribers.svg',
-                      colorIcon: grey,
+                      colorIcon: !themeController.currentTheme.value
+                          ? grey
+                          : TextColorBlue.withOpacity(0.7),
                       tap: () {
                         print('You Click karyawan');
                       }),
@@ -171,7 +180,9 @@ class DrawerMenu extends StatelessWidget {
                   child: DrawerListTile(
                       title: 'Jenis Produk',
                       svgSrc: 'icons/Box.svg',
-                      colorIcon: grey,
+                      colorIcon: !themeController.currentTheme.value
+                          ? grey
+                          : TextColorBlue.withOpacity(0.7),
                       tap: () {
                         print('You Click Jenis Produk');
                       }),
@@ -183,7 +194,9 @@ class DrawerMenu extends StatelessWidget {
                   child: DrawerListTile(
                       title: 'Merk',
                       svgSrc: 'icons/Box.svg',
-                      colorIcon: grey,
+                      colorIcon: !themeController.currentTheme.value
+                          ? grey
+                          : TextColorBlue.withOpacity(0.7),
                       tap: () {
                         print('You Click Merk');
                       }),
@@ -195,7 +208,9 @@ class DrawerMenu extends StatelessWidget {
                   child: DrawerListTile(
                     title: 'Type',
                     svgSrc: 'icons/Box.svg',
-                    colorIcon: grey,
+                    colorIcon: !themeController.currentTheme.value
+                        ? grey
+                        : TextColorBlue.withOpacity(0.7),
                     tap: () {},
                   ),
                 ),
@@ -223,9 +238,10 @@ class DrawerMenu extends StatelessWidget {
                 svgSrc: 'icons/Logout.svg',
                 colorIcon: TextColorBlue,
                 tap: () {
-                  themeController.Desktop(context)
-                      ? Get.back()
-                      : Get.toNamed('/login');
+                  Get.offAllNamed('/welcome');
+                  // themeController.Desktop(context)
+                  //     ? Get.back()
+                  //     : Get.toNamed('/login');
                 }),
           ),
           SizedBox(height: 300),
@@ -236,7 +252,7 @@ class DrawerMenu extends StatelessWidget {
               children: [
                 Obx(() => Container(
                       child: Text(
-                        themeController.currentTheme == ThemeMode.light
+                        !themeController.currentTheme.value
                             ? 'Light Mode'
                             : 'Dark Mode',
                         style: TextStyle(
@@ -244,9 +260,9 @@ class DrawerMenu extends StatelessWidget {
                       ),
                     )),
                 Obx(() => Switch(
-                      value: themeController.isDark.value,
+                      value: themeController.currentTheme.value,
                       // themeController.currentTheme == ThemeMode.light,
-                      onChanged: (value) => themeController.ChangeMode(),
+                      onChanged: (value) => themeController.switchTheme(),
 
                       //(value) {
                       //   themeController.switchTheme();
@@ -255,7 +271,24 @@ class DrawerMenu extends StatelessWidget {
                       //   print(themeController.currentTheme.value);
                       // },
                       activeColor: CustomTheme.lightThemeColor,
+                      activeTrackColor:
+                          CustomTheme.lightThemeColor.withOpacity(0.5),
+                      inactiveThumbColor: CustomTheme.grey,
+                      inactiveTrackColor: CustomTheme.white,
                     )),
+                // Obx(() => Switch(
+                //       value: themeController.isDark.value,
+                //       // themeController.currentTheme == ThemeMode.light,
+                //       onChanged: (value) => themeController.ChangeMode(),
+
+                //       //(value) {
+                //       //   themeController.switchTheme();
+                //       //   Get.changeThemeMode(
+                //       //       themeController.currentTheme.value);
+                //       //   print(themeController.currentTheme.value);
+                //       // },
+                //       activeColor: CustomTheme.lightThemeColor,
+                //     )),
               ],
             )
         ],
