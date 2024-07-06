@@ -18,7 +18,7 @@ class ProfileInfo extends StatelessWidget {
     return Row(
       children: [
         Padding(
-          padding: const EdgeInsets.all(appPadding),
+          padding: const EdgeInsets.all(10),
           child: Stack(
             children: [
               HoverWidget(
@@ -51,7 +51,7 @@ class ProfileInfo extends StatelessWidget {
           child: Container(
             margin: EdgeInsets.only(left: appPadding),
             padding: EdgeInsets.symmetric(
-              horizontal: appPadding,
+              horizontal: 10,
               vertical: appPadding / 2,
             ),
             child: Row(

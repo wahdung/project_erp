@@ -13,7 +13,7 @@
 //   @override
 //   Widget build(BuildContext context) {
 
-//     Size size = 0.0;
+//     Size size = S;
 
 //     return Container(
 //       child: Responsive(

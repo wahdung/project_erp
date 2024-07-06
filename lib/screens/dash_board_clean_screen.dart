@@ -8,6 +8,7 @@ import 'package:project_erp/controllers/themeController.dart';
 
 import 'package:project_erp/screens/components/dashboard_clean_content.dart';
 import 'package:project_erp/screens/components/dashboard_content.dart';
+import 'package:project_erp/screens/components/drawer_menu_mini.dart';
 import 'package:project_erp/screens/components/login_content.dart';
 
 import 'components/drawer_menu.dart';
@@ -25,13 +26,19 @@ class DashboardCleanScreen extends StatelessWidget {
         Container(
       child: Scaffold(
         key: themeController.scaffoldKey,
-        backgroundColor: Theme.of(context).cardColor,
+        // backgroundColor: Theme.of(context).cardColor,
         drawer: DrawerMenu(),
         body: SafeArea(
           child: Row(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              if (themeController.Desktop(context)) DrawerMenu(),
+              themeController.Desktop(context)
+                  ? Obx(() => Container(
+                        child: themeController.visibleDrawer.value
+                            ? DrawerMenuMini()
+                            : DrawerMenu(),
+                      ))
+                  : Container(),
               Expanded(
                 flex: 5,
                 child: DashboardCleanContent(),

@@ -19,6 +19,9 @@ class DrawerListTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListTile(
+      selected: false,
+
+      selectedTileColor: Colors.pink,
       // onTap: tap,
       // horizontalTitleGap: 0.0,
       // leading: SvgPicture.asset(

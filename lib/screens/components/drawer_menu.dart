@@ -39,6 +39,10 @@ class DrawerMenu extends StatelessWidget {
                 colorIcon: TextColorBlue,
                 tap: () {
                   print('You Click Dash Board');
+                  themeController.clearAllSelected();
+                  themeController.visibleDashboard.value
+                      ? themeController.showDashboard()
+                      : themeController.hideDashboard();
                 }),
           ),
           // Padding(
@@ -230,7 +234,12 @@ class DrawerMenu extends StatelessWidget {
                 title: 'Settings',
                 svgSrc: 'icons/Setting.svg',
                 colorIcon: TextColorBlue,
-                tap: () {}),
+                tap: () {
+                  themeController.clearAllSelected();
+                  themeController.visibleSetting.value
+                      ? themeController.showSetting()
+                      : themeController.hideSetting();
+                }),
           ),
           HoverWidget(
             child: DrawerListTile(

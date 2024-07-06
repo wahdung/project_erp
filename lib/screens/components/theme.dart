@@ -20,7 +20,8 @@ class CustomTheme {
   static final lightTheme = ThemeData(
     hoverColor: Colors.white,
     shadowColor: Color.fromARGB(255, 80, 78, 78),
-    primaryColor: ThemeData.light().primaryColor,
+    primaryColor: Color.fromARGB(223, 255, 244, 244),
+    // primaryColor: ThemeData.light().primaryColor,
     brightness: Brightness.light,
     scaffoldBackgroundColor: white,
     useMaterial3: true,
