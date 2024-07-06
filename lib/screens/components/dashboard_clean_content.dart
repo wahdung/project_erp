@@ -8,7 +8,6 @@ import 'package:project_erp/controllers/themeController.dart';
 import 'package:project_erp/screens/components/Login.dart';
 import 'package:project_erp/screens/components/analytic_cards.dart';
 import 'package:project_erp/screens/components/bottom_navigation.dart';
-import 'package:project_erp/screens/components/chart_bar_2';
 import 'package:project_erp/screens/components/chart_sample.dart';
 
 import 'package:project_erp/screens/components/custom_appbar.dart';
