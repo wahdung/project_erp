@@ -8,6 +8,7 @@ import 'package:project_erp/controllers/themeController.dart';
 import 'package:project_erp/screens/components/Login.dart';
 import 'package:project_erp/screens/components/analytic_cards.dart';
 import 'package:project_erp/screens/components/bottom_navigation.dart';
+import 'package:project_erp/screens/components/chart_line_2.dart';
 import 'package:project_erp/screens/components/chart_sample.dart';
 
 import 'package:project_erp/screens/components/custom_appbar.dart';
@@ -57,7 +58,31 @@ class DashboardCleanContent extends StatelessWidget {
                       Container(
                         width: 500,
                         height: 300,
-                        child: ChartLine2(),
+                        child:
+                            // Text("")
+                            ChartLine2(),
+                      ),
+                    ]),
+                  ),
+                  Card(
+                    elevation: 4,
+                    color: Theme.of(context).cardColor,
+                    shadowColor: TextColorBlue,
+                    child: Column(children: [
+                      SizedBox(
+                        height: 20,
+                      ),
+                      Text(
+                        'CHART 2',
+                        style: TextStyle(
+                            fontWeight: FontWeight.bold, fontSize: 20),
+                      ),
+                      Container(
+                        width: 500,
+                        height: 300,
+                        child:
+                            // Text("")
+                            LineChartSample2(),
                       ),
                     ]),
                   ),

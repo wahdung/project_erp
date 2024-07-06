@@ -286,3 +286,9 @@ Color lerpGradient(List<Color> colors, List<double> stops, double t) {
   }
   return colors.last;
 }
+
+// @override
+// dispose() {
+// LineTouchData().d; // you need this
+//   super.dispose();
+// }
