@@ -1,8 +1,6 @@
 import 'dart:async';
 import 'dart:math';
 
-
-import 'package:fl_chart_app/util/extensions/color_extensions.dart';
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 
@@ -10,24 +8,23 @@ class ChartLine3 extends StatefulWidget {
   ChartLine3({super.key});
 
   List<Color> get availableColors => const <Color>[
-        AppColors.contentColorPurple,
-        AppColors.contentColorYellow,
-        AppColors.contentColorBlue,
-        AppColors.contentColorOrange,
-        AppColors.contentColorPink,
-        AppColors.contentColorRed,
+        Colors.purple,
+        Colors.yellow,
+        Colors.blue,
+        Colors.orange,
+        Colors.pink,
+        Colors.red,
       ];
 
-  final Color barBackgroundColor =
-      AppColors.contentColorWhite.darken().withOpacity(0.3);
-  final Color barColor = AppColors.contentColorWhite;
-  final Color touchedBarColor = AppColors.contentColorGreen;
+  final Color barBackgroundColor = Colors.white.withOpacity(0.3);
+  final Color barColor = Colors.white;
+  final Color touchedBarColor = Colors.green;
 
   @override
   State<StatefulWidget> createState() => BarChartSample1State();
 }
 
-class BarChartSample1State extends State<BarChartSample1> {
+class BarChartSample1State extends State<ChartLine3> {
   final Duration animDuration = const Duration(milliseconds: 250);
 
   int touchedIndex = -1;
@@ -48,7 +45,7 @@ class BarChartSample1State extends State<BarChartSample1> {
                 const Text(
                   'Mingguan',
                   style: TextStyle(
-                    color: AppColors.contentColorGreen,
+                    color: Colors.green,
                     fontSize: 24,
                     fontWeight: FontWeight.bold,
                   ),
@@ -59,7 +56,7 @@ class BarChartSample1State extends State<BarChartSample1> {
                 Text(
                   'Grafik konsumsi kalori',
                   style: TextStyle(
-                    color: AppColors.contentColorGreen.darken(),
+                    color: Colors.green,
                     fontSize: 18,
                     fontWeight: FontWeight.bold,
                   ),
@@ -89,7 +86,7 @@ class BarChartSample1State extends State<BarChartSample1> {
               child: IconButton(
                 icon: Icon(
                   isPlaying ? Icons.pause : Icons.play_arrow,
-                  color: AppColors.contentColorGreen,
+                  color: Colors.green,
                 ),
                 onPressed: () {
                   setState(() {
@@ -124,7 +121,7 @@ class BarChartSample1State extends State<BarChartSample1> {
           color: isTouched ? widget.touchedBarColor : barColor,
           width: width,
           borderSide: isTouched
-              ? BorderSide(color: widget.touchedBarColor.darken(80))
+              ? BorderSide(color: widget.touchedBarColor)
               : const BorderSide(color: Colors.white, width: 0),
           backDrawRodData: BackgroundBarChartRodData(
             show: true,
