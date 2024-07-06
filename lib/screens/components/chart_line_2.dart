@@ -8,9 +8,9 @@ class ChartLine2 extends StatefulWidget {
     Color? gradientColor2,
     Color? gradientColor3,
     Color? indicatorStrokeColor,
-  })  : gradientColor1 = gradientColor1 ?? Colors.blue,
-        gradientColor2 = gradientColor2 ?? Colors.pink,
-        gradientColor3 = gradientColor3 ?? Colors.red,
+  })  : gradientColor1 = gradientColor1 ?? Colors.green,
+        gradientColor2 = gradientColor2 ?? Colors.cyan,
+        gradientColor3 = gradientColor3 ?? Colors.blue,
         indicatorStrokeColor = indicatorStrokeColor ?? Colors.black;
 
   final Color gradientColor1;
@@ -228,10 +228,10 @@ class _LineChartSample5State extends State<ChartLine2> {
                   ),
                 ),
                 topTitles: const AxisTitles(
-                  axisNameWidget: Text(
-                    'Wall clock',
-                    textAlign: TextAlign.left,
-                  ),
+                  // axisNameWidget: Text(
+                  //   'Wall clock',
+                  //   textAlign: TextAlign.left,
+                  // ),
                   axisNameSize: 24,
                   sideTitles: SideTitles(
                     showTitles: true,

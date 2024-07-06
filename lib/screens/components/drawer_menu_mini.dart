@@ -26,6 +26,9 @@ class DrawerMenuMini extends StatelessWidget {
         child: Drawer(
             width: 100,
             child: ListView(children: [
+              SizedBox(
+                height: 20,
+              ),
               Container(
                 width: 90,
                 height: 90,

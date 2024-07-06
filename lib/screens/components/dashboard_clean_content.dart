@@ -9,8 +9,7 @@ import 'package:project_erp/screens/components/Login.dart';
 import 'package:project_erp/screens/components/analytic_cards.dart';
 import 'package:project_erp/screens/components/bottom_navigation.dart';
 import 'package:project_erp/screens/components/chart_line_2.dart';
-
-import 'package:project_erp/screens/components/chart_line_3_dart';
+import 'package:project_erp/screens/components/chart_line_3.dart';
 import 'package:project_erp/screens/components/chart_sample.dart';
 
 import 'package:project_erp/screens/components/custom_appbar.dart';
@@ -45,12 +44,13 @@ class DashboardCleanContent extends StatelessWidget {
               child: Wrap(
                 children: [
                   Card(
-                    elevation: 4,
+                    margin: EdgeInsets.all(20),
+                    elevation: 6,
                     color: Theme.of(context).cardColor,
                     shadowColor: TextColorBlue,
                     child: Column(children: [
                       SizedBox(
-                        height: 20,
+                        height: 10,
                       ),
                       Text(
                         'CHART 1',
@@ -58,7 +58,7 @@ class DashboardCleanContent extends StatelessWidget {
                             fontWeight: FontWeight.bold, fontSize: 20),
                       ),
                       Container(
-                        width: 500,
+                        width: 470,
                         height: 300,
                         child:
                             // Text("")
@@ -67,24 +67,58 @@ class DashboardCleanContent extends StatelessWidget {
                     ]),
                   ),
                   Card(
-                    elevation: 4,
+                    margin: EdgeInsets.all(20),
+                    elevation: 6,
                     color: Theme.of(context).cardColor,
                     shadowColor: TextColorBlue,
                     child: Column(children: [
                       SizedBox(
-                        height: 20,
+                        height: 10,
                       ),
                       Text(
                         'CHART 2',
                         style: TextStyle(
                             fontWeight: FontWeight.bold, fontSize: 20),
                       ),
+                      Container(width: 470, height: 300, child: ChartLine3())
+                      // ChartLine3()),
+                    ]),
+                  ),
+                  Card(
+                    margin: EdgeInsets.all(20),
+                    elevation: 6,
+                    color: Theme.of(context).cardColor,
+                    shadowColor: TextColorBlue,
+                    child: Column(children: [
+                      SizedBox(
+                        height: 10,
+                      ),
+                      Text(
+                        'CHART 3',
+                        style: TextStyle(
+                            fontWeight: FontWeight.bold, fontSize: 20),
+                      ),
+                      Container(width: 470, height: 300, child: ChartLine3())
+                      // ChartLine3()),
+                    ]),
+                  ),
+                  Card(
+                    margin: EdgeInsets.all(20),
+                    elevation: 6,
+                    color: Theme.of(context).cardColor,
+                    shadowColor: TextColorBlue,
+                    child: Column(children: [
+                      SizedBox(
+                        height: 10,
+                      ),
+                      Text(
+                        'CHART 4',
+                        style: TextStyle(
+                            fontWeight: FontWeight.bold, fontSize: 20),
+                      ),
                       Container(
-                          width: 500,
-                          height: 300,
-                          child:
-                              // Text("")
-                              ChartLine3()),
+                          width: 470, height: 300, child: LineChartSample2())
+                      // ChartLine3()),
                     ]),
                   ),
                   Container(
