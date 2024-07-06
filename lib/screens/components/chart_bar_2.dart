@@ -1,4 +1,3 @@
-import 'package:fl_chart_app/presentation/resources/app_resources.dart';
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 
@@ -9,11 +8,10 @@ class ChartLine2 extends StatefulWidget {
     Color? gradientColor2,
     Color? gradientColor3,
     Color? indicatorStrokeColor,
-  })  : 
-  gradientColor1 = gradientColor1 ?? AppColors.contentColorBlue,
-  gradientColor2 = gradientColor2 ?? AppColors.contentColorPink,
-  gradientColor3 = gradientColor3 ?? AppColors.contentColorRed,
-  indicatorStrokeColor = indicatorStrokeColor ?? AppColors.mainTextColor1;
+  })  : gradientColor1 = gradientColor1 ?? Colors.blue,
+        gradientColor2 = gradientColor2 ?? Colors.pink,
+        gradientColor3 = gradientColor3 ?? Colors.red,
+        indicatorStrokeColor = indicatorStrokeColor ?? Colors.black;
 
   final Color gradientColor1;
   final Color gradientColor2;
@@ -21,10 +19,10 @@ class ChartLine2 extends StatefulWidget {
   final Color indicatorStrokeColor;
 
   @override
-  State<LineChartSample5> createState() => _LineChartSample5State();
+  State<ChartLine2> createState() => _LineChartSample5State();
 }
 
-class _LineChartSample5State extends State<LineChartSample5> {
+class _LineChartSample5State extends State<ChartLine2> {
   List<int> showingTooltipOnSpots = [1, 3, 5];
 
   List<FlSpot> get allSpots => const [
@@ -40,7 +38,7 @@ class _LineChartSample5State extends State<LineChartSample5> {
   Widget bottomTitleWidgets(double value, TitleMeta meta, double chartWidth) {
     final style = TextStyle(
       fontWeight: FontWeight.bold,
-      color: AppColors.contentColorPink,
+      color: Colors.pink,
       fontFamily: 'Digital',
       fontSize: 18 * chartWidth / 500,
     );
@@ -245,7 +243,7 @@ class _LineChartSample5State extends State<LineChartSample5> {
               borderData: FlBorderData(
                 show: true,
                 border: Border.all(
-                  color: AppColors.borderColor,
+                  color: Colors.black,
                 ),
               ),
             ),
