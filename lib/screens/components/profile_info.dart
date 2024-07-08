@@ -21,19 +21,23 @@ class ProfileInfo extends StatelessWidget {
           padding: const EdgeInsets.all(10),
           child: Stack(
             children: [
-              HoverWidget(
-                child: IconButton(
-                  onPressed: themeController.openDrawer,
-                  icon: SvgPicture.asset(
-                    "icons/Bell.svg",
-                    height: 25,
-                    color: !themeController.currentTheme.value
-                        ? TextColorBlue
-                        : Colors.white,
-                  ),
+              Container(
+                padding: EdgeInsets.only(top: 10),
+                child: HoverWidget(
+                  child: Obx(() => IconButton(
+                        onPressed: themeController.openDrawer,
+                        icon: SvgPicture.asset(
+                          "icons/Bell.svg",
+                          height: 30,
+                          color: !themeController.currentTheme.value
+                              ? TextColorBlue
+                              : Colors.white,
+                        ),
+                      )),
                 ),
               ),
               Positioned(
+                top: 10,
                 right: 0,
                 child: Container(
                   height: 10,
@@ -50,9 +54,11 @@ class ProfileInfo extends StatelessWidget {
         HoverWidget(
           child: Container(
             margin: EdgeInsets.only(left: appPadding),
-            padding: EdgeInsets.symmetric(
-              horizontal: 10,
-              vertical: appPadding / 2,
+            padding: EdgeInsets.only(
+              left: 10,
+              right: 10,
+              top: 15,
+              bottom: 10,
             ),
             child: Row(
               children: [
@@ -69,15 +75,15 @@ class ProfileInfo extends StatelessWidget {
                   Padding(
                     padding:
                         const EdgeInsets.symmetric(horizontal: appPadding / 2),
-                    child: Text(
-                      'Hii, Gungwah',
-                      style: TextStyle(
-                        color: !themeController.currentTheme.value
-                            ? TextColorBlue
-                            : Colors.white,
-                        fontWeight: FontWeight.w800,
-                      ),
-                    ),
+                    child: Obx(() => Text(
+                          'Hii, Gungwah',
+                          style: TextStyle(
+                            color: !themeController.currentTheme.value
+                                ? TextColorBlue
+                                : Colors.white,
+                            fontWeight: FontWeight.w800,
+                          ),
+                        )),
                   )
               ],
             ),

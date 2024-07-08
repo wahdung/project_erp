@@ -5,6 +5,7 @@ import 'package:project_erp/constants/constants.dart';
 import 'package:project_erp/constants/responsive.dart';
 import 'package:project_erp/controllers/controller.dart';
 import 'package:project_erp/controllers/themeController.dart';
+import 'package:project_erp/screens/components/custom_appbar.dart';
 
 import 'package:project_erp/screens/components/dashboard_clean_content.dart';
 import 'package:project_erp/screens/components/dashboard_content.dart';
@@ -40,9 +41,21 @@ class DashboardCleanScreen extends StatelessWidget {
                       ))
                   : Container(),
               Expanded(
-                flex: 5,
-                child: DashboardCleanContent(),
-              ),
+                  child: Scaffold(
+                appBar: PreferredSize(
+                  preferredSize: Size.fromHeight(70),
+                  child: AppBar(
+                      flexibleSpace: Container(
+                    child: CustomAppbar(),
+                  )),
+                ),
+                body: DashboardCleanContent(),
+              )),
+
+              // Expanded(
+              //   flex: 5,
+              //   child: DashboardCleanContent(),
+              // ),
             ],
           ),
         ),

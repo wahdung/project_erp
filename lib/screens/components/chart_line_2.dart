@@ -1,5 +1,6 @@
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class ChartLine2 extends StatefulWidget {
   const ChartLine2({
@@ -286,9 +287,3 @@ Color lerpGradient(List<Color> colors, List<double> stops, double t) {
   }
   return colors.last;
 }
-
-// @override
-// dispose() {
-// LineTouchData().d; // you need this
-//   super.dispose();
-// }

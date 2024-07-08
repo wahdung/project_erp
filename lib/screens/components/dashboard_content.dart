@@ -21,7 +21,7 @@ class DashboardContent extends StatelessWidget {
         padding: EdgeInsets.all(appPadding),
         child: Column(
           children: [
-            CustomAppbar(),
+            // CustomAppbar(),
             SizedBox(
               height: appPadding,
             ),

@@ -34,7 +34,11 @@ class DashboardCleanContent extends StatelessWidget {
       padding: EdgeInsets.all(appPadding),
       child: Container(
         child: Column(children: [
-          CustomAppbar(),
+          Container(
+            padding: EdgeInsets.all(5),
+            constraints: BoxConstraints.tightForFinite(),
+            decoration: BoxDecoration(),
+          ),
           SizedBox(
             height: appPadding,
           ),

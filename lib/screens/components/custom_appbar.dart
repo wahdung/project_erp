@@ -18,80 +18,96 @@ class CustomAppbar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final themeController = Get.find<GetThemeController>();
-    return Container(
-      padding: EdgeInsets.all(5),
-      constraints: BoxConstraints.tightForFinite(),
-      decoration: BoxDecoration(),
-      child: Row(children: [
-        if (!themeController.Desktop(context))
-          HoverWidget(
-            child: IconButton(
-              onPressed: themeController.openDrawer,
-              icon: Icon(
-                Icons.menu,
-                color: !themeController.currentTheme.value
-                    ? TextColorBlue
-                    : Colors.white,
+    return Stack(
+      // padding: EdgeInsets.all(5),
+      // constraints: BoxConstraints.tightForFinite(),
+      // decoration: BoxDecoration(),
+      children: [
+        // Positioned(top: 50, child: Text('')),
+        Row(crossAxisAlignment: CrossAxisAlignment.center, children: [
+          SizedBox(
+            width: 10,
+          ),
+          if (!themeController.Desktop(context))
+            Container(
+              padding: EdgeInsets.only(top: 10),
+              child: HoverWidget(
+                child: Obx(() => IconButton(
+                      onPressed: themeController.openDrawer,
+                      icon: Icon(
+                        Icons.menu,
+                        color: !themeController.currentTheme.value
+                            ? TextColorBlue
+                            : Colors.white,
+                      ),
+                    )),
               ),
             ),
+          if (themeController.Desktop(context))
+            Container(
+              padding: EdgeInsets.only(top: 10),
+              child: Obx(() => HoverWidget(
+                    child: IconButton(
+                      onPressed: () {
+                        themeController.visibleDrawer.value
+                            ? themeController.showDrawer()
+                            : themeController.hideDrawer();
+                        themeController.selectedMinimizeDrawer.value =
+                            !themeController.selectedMinimizeDrawer.value;
+                        print(selected);
+                      },
+                      icon: Icon(
+                        Icons.arrow_back_ios,
+                        color: !themeController.currentTheme.value
+                            ? TextColorBlue
+                            : Colors.white,
+                      ),
+                      selectedIcon: Icon(
+                        Icons.arrow_forward_ios,
+                        color: !themeController.currentTheme.value
+                            ? TextColorBlue
+                            : Colors.white,
+                      ),
+                      isSelected: themeController.selectedMinimizeDrawer.value,
+                    ),
+                  )),
+            ),
+          SizedBox(
+            width: 10,
           ),
-        if (themeController.Desktop(context))
-          Obx(() => HoverWidget(
-                child: IconButton(
-                  onPressed: () {
-                    themeController.visibleDrawer.value
-                        ? themeController.showDrawer()
-                        : themeController.hideDrawer();
-                    themeController.selectedMinimizeDrawer.value =
-                        !themeController.selectedMinimizeDrawer.value;
-                    print(selected);
-                  },
-                  icon: Icon(
-                    Icons.arrow_back_ios,
-                    color: !themeController.currentTheme.value
-                        ? TextColorBlue
-                        : Colors.white,
-                  ),
-                  selectedIcon: Icon(
-                    Icons.arrow_forward_ios,
-                    color: !themeController.currentTheme.value
-                        ? TextColorBlue
-                        : Colors.white,
-                  ),
-                  isSelected: themeController.selectedMinimizeDrawer.value,
-                ),
-              )),
-        SizedBox(
-          width: 10,
-        ),
-        Expanded(
-          child: SearchField(),
-        ),
-        SizedBox(
-          width: 10,
-        ),
-        if (!themeController.Mobile(context))
-          Obx(() => Switch(
-                value: themeController.currentTheme.value,
-                // themeController.currentTheme == ThemeMode.light,
-                onChanged: (value) => themeController.switchTheme(),
+          Expanded(
+            child: SearchField(),
+          ),
+          SizedBox(
+            width: 10,
+          ),
+          if (!themeController.Mobile(context))
+            Container(
+              padding: EdgeInsets.only(top: 10),
+              child: Obx(() => Switch(
+                    value: themeController.currentTheme.value,
+                    // themeController.currentTheme == ThemeMode.light,
+                    onChanged: (value) => themeController.switchTheme(),
 
-                //(value) {
-                //   themeController.switchTheme();
-                //   Get.changeThemeMode(
-                //       themeController.currentTheme.value);
-                //   print(themeController.currentTheme.value);
-                // },
-                activeColor: CustomTheme.lightThemeColor,
-                activeTrackColor: CustomTheme.lightThemeColor.withOpacity(0.5),
-                inactiveThumbColor: CustomTheme.grey,
-                inactiveTrackColor: CustomTheme.white,
-              )),
-        ProfileInfo(),
-        SizedBox(
-          width: 10,
-        ),
-      ]),
+                    //(value) {
+                    //   themeController.switchTheme();
+                    //   Get.changeThemeMode(
+                    //       themeController.currentTheme.value);
+                    //   print(themeController.currentTheme.value);
+                    // },
+                    activeColor: CustomTheme.lightThemeColor,
+                    activeTrackColor:
+                        CustomTheme.lightThemeColor.withOpacity(0.5),
+                    inactiveThumbColor: CustomTheme.grey,
+                    inactiveTrackColor: CustomTheme.white,
+                  )),
+            ),
+          ProfileInfo(),
+          SizedBox(
+            width: 10,
+          ),
+        ]),
+      ],
       //
       // SizedBox(
       //   width: 20,
