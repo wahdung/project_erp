@@ -1,6 +1,10 @@
+import 'dart:io';
+
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:hover_widget/hover_widget.dart';
 import 'package:project_erp/controllers/themeController.dart';
 import 'package:project_erp/screens/components/home.dart';
 import 'package:project_erp/screens/components/theme.dart';
@@ -10,9 +14,27 @@ import 'package:provider/provider.dart';
 // import 'package:project_erp/screens/dash_board_screen.dart';
 import 'package:project_erp/screens/dash_board_clean_screen.dart';
 import 'package:project_erp/screens/login_screen.dart';
+import 'package:window_manager/window_manager.dart';
 
 void main() {
-  runApp(MyApp());
+  if (kIsWeb) {
+    runApp(MyApp());
+    HoverWidgetState().dispose();
+    // WindowManager.instance.setMaximumSize(const Size(1280, 1080));
+  }
+  // if (Platform.isWindows) {
+
+  //
+  //
+  //
+  else {
+    WidgetsFlutterBinding.ensureInitialized();
+    windowManager.ensureInitialized();
+    WindowManager.instance.setMinimumSize(const Size(1080, 950));
+    WindowManager.instance.setTitle("PROJECT ERP");
+    WindowManager.instance.setIcon('assets/images/logoonly.png');
+    runApp(MyApp());
+  }
 }
 
 class MyApp extends StatelessWidget {

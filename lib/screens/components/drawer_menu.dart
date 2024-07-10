@@ -26,7 +26,7 @@ class DrawerMenu extends StatelessWidget {
         children: [
           Container(
             padding: EdgeInsets.all(appPadding),
-            child: Image(image: AssetImage('images/logowithtext.png')),
+            child: Image(image: AssetImage('assets/images/logowithtext.png')),
           ),
           Container(
             padding: EdgeInsets.only(left: textPadding),
@@ -35,7 +35,7 @@ class DrawerMenu extends StatelessWidget {
           HoverWidget(
             child: DrawerListTile(
                 title: 'Dashboard',
-                svgSrc: 'icons/Dashboard.svg',
+                svgSrc: 'assets/icons/Dashboard.svg',
                 colorIcon: TextColorBlue,
                 tap: () {
                   print('You Click Dash Board');
@@ -87,7 +87,7 @@ class DrawerMenu extends StatelessWidget {
                   TextStyle(fontWeight: FontWeight.bold, color: TextColorBlue),
             ),
             leading: SvgPicture.asset(
-              'icons/Subscribers.svg',
+              'assets/icons/Subscribers.svg',
               color: TextColorBlue,
               height: 20,
               alignment: Alignment.centerLeft,
@@ -98,7 +98,7 @@ class DrawerMenu extends StatelessWidget {
                   padding: EdgeInsets.only(left: 10),
                   child: DrawerListTile(
                       title: 'Customer',
-                      svgSrc: 'icons/Subscribers.svg',
+                      svgSrc: 'assets/icons/Subscribers.svg',
                       colorIcon: !themeController.currentTheme.value
                           ? grey
                           : TextColorBlue.withOpacity(0.7),
@@ -112,7 +112,7 @@ class DrawerMenu extends StatelessWidget {
                   padding: EdgeInsets.only(left: 10),
                   child: DrawerListTile(
                       title: 'Partner',
-                      svgSrc: 'icons/Subscribers.svg',
+                      svgSrc: 'assets/icons/Subscribers.svg',
                       colorIcon: !themeController.currentTheme.value
                           ? grey
                           : TextColorBlue.withOpacity(0.7),
@@ -126,7 +126,7 @@ class DrawerMenu extends StatelessWidget {
                   padding: EdgeInsets.only(left: 10),
                   child: DrawerListTile(
                       title: 'Supplier',
-                      svgSrc: 'icons/Subscribers.svg',
+                      svgSrc: 'assets/icons/Subscribers.svg',
                       colorIcon: !themeController.currentTheme.value
                           ? grey
                           : TextColorBlue.withOpacity(0.7),
@@ -140,7 +140,7 @@ class DrawerMenu extends StatelessWidget {
                   padding: EdgeInsets.only(left: 10),
                   child: DrawerListTile(
                       title: 'Karyawan',
-                      svgSrc: 'icons/Subscribers.svg',
+                      svgSrc: 'assets/icons/Subscribers.svg',
                       colorIcon: !themeController.currentTheme.value
                           ? grey
                           : TextColorBlue.withOpacity(0.7),
@@ -172,7 +172,7 @@ class DrawerMenu extends StatelessWidget {
                   TextStyle(fontWeight: FontWeight.bold, color: TextColorBlue),
             ),
             leading: SvgPicture.asset(
-              'icons/Box.svg',
+              'assets/icons/Box.svg',
               color: TextColorBlue,
               height: 20,
               alignment: Alignment.centerLeft,
@@ -183,7 +183,7 @@ class DrawerMenu extends StatelessWidget {
                   padding: EdgeInsets.only(left: 10),
                   child: DrawerListTile(
                       title: 'Jenis Produk',
-                      svgSrc: 'icons/Box.svg',
+                      svgSrc: 'assets/icons/Box.svg',
                       colorIcon: !themeController.currentTheme.value
                           ? grey
                           : TextColorBlue.withOpacity(0.7),
@@ -197,7 +197,7 @@ class DrawerMenu extends StatelessWidget {
                   padding: EdgeInsets.only(left: 10),
                   child: DrawerListTile(
                       title: 'Merk',
-                      svgSrc: 'icons/Box.svg',
+                      svgSrc: 'assets/icons/Box.svg',
                       colorIcon: !themeController.currentTheme.value
                           ? grey
                           : TextColorBlue.withOpacity(0.7),
@@ -211,7 +211,7 @@ class DrawerMenu extends StatelessWidget {
                   padding: EdgeInsets.only(left: 10),
                   child: DrawerListTile(
                     title: 'Type',
-                    svgSrc: 'icons/Box.svg',
+                    svgSrc: 'assets/icons/Box.svg',
                     colorIcon: !themeController.currentTheme.value
                         ? grey
                         : TextColorBlue.withOpacity(0.7),
@@ -232,7 +232,7 @@ class DrawerMenu extends StatelessWidget {
           HoverWidget(
             child: DrawerListTile(
                 title: 'Settings',
-                svgSrc: 'icons/Setting.svg',
+                svgSrc: 'assets/icons/Setting.svg',
                 colorIcon: TextColorBlue,
                 tap: () {
                   themeController.clearAllSelected();
@@ -244,10 +244,12 @@ class DrawerMenu extends StatelessWidget {
           HoverWidget(
             child: DrawerListTile(
                 title: 'Logout',
-                svgSrc: 'icons/Logout.svg',
+                svgSrc: 'assets/icons/Logout.svg',
                 colorIcon: TextColorBlue,
                 tap: () {
                   Get.offAllNamed('/welcome');
+
+                  // HoverWidgetState().dispose();
                   // themeController.Desktop(context)
                   //     ? Get.back()
                   //     : Get.toNamed('/login');

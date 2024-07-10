@@ -32,7 +32,7 @@ class DrawerMenuMini extends StatelessWidget {
               Container(
                 width: 90,
                 height: 90,
-                child: Image(image: AssetImage('images/logoonly.png')),
+                child: Image(image: AssetImage('assets/images/logoonly.png')),
               ),
               // Container(
               //   padding: EdgeInsets.only(left: textPadding),
@@ -42,7 +42,7 @@ class DrawerMenuMini extends StatelessWidget {
               IconButton(
                   isSelected: themeController.selectedDashboard.value,
                   selectedIcon: HoverWidget(
-                    child: SvgPicture.asset('icons/Dashboard.svg',
+                    child: SvgPicture.asset('assets/icons/Dashboard.svg',
                         color: TextColorBlue,
                         width: 70,
                         height: 70,
@@ -50,7 +50,7 @@ class DrawerMenuMini extends StatelessWidget {
                   ),
                   hoverColor: transparent,
                   icon: HoverWidget(
-                    child: SvgPicture.asset('icons/Dashboard.svg',
+                    child: SvgPicture.asset('assets/icons/Dashboard.svg',
                         color: TextColorBlue,
                         width: 50,
                         height: 50,
@@ -69,7 +69,7 @@ class DrawerMenuMini extends StatelessWidget {
               IconButton(
                   isSelected: false,
                   selectedIcon: HoverWidget(
-                    child: SvgPicture.asset('icons/Setting.svg',
+                    child: SvgPicture.asset('assets/icons/Setting.svg',
                         color: TextColorBlue,
                         width: 70,
                         height: 70,
@@ -77,7 +77,7 @@ class DrawerMenuMini extends StatelessWidget {
                   ),
                   hoverColor: transparent,
                   icon: HoverWidget(
-                    child: SvgPicture.asset('icons/Setting.svg',
+                    child: SvgPicture.asset('assets/icons/Setting.svg',
                         color: TextColorBlue,
                         width: 50,
                         height: 50,

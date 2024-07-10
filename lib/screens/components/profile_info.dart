@@ -27,7 +27,7 @@ class ProfileInfo extends StatelessWidget {
                   child: Obx(() => IconButton(
                         onPressed: themeController.openDrawer,
                         icon: SvgPicture.asset(
-                          "icons/Bell.svg",
+                          "assets/icons/Bell.svg",
                           height: 30,
                           color: !themeController.currentTheme.value
                               ? TextColorBlue
@@ -64,7 +64,7 @@ class ProfileInfo extends StatelessWidget {
               children: [
                 ClipRRect(
                   child: Image.asset(
-                    'images/photo3.jpg',
+                    'assets/images/photo3.jpg',
                     height: 38,
                     width: 38,
                     fit: BoxFit.cover,

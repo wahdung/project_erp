@@ -14,7 +14,8 @@ import 'package:project_erp/screens/dash_board_clean_screen.dart';
 import 'package:project_erp/screens/login_screen.dart';
 
 class CustomTheme {
-  static const lightThemeFont = "Poppins", darkThemeFont = "Poppins";
+  static const lightThemeFont = "Poppins";
+  static const darkThemeFont = "Poppins";
 
   // light theme
   static final lightTheme = ThemeData(
@@ -25,7 +26,7 @@ class CustomTheme {
     brightness: Brightness.light,
     scaffoldBackgroundColor: white,
     useMaterial3: true,
-    fontFamily: GoogleFonts.sahitya.toString(),
+    fontFamily: lightThemeFont,
     switchTheme: SwitchThemeData(
       thumbColor:
           MaterialStateProperty.resolveWith<Color>((states) => lightThemeColor),

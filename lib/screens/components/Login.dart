@@ -1,6 +1,7 @@
 import 'dart:math';
 import 'dart:ui';
 import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
 import 'package:hover_widget/hover_widget.dart';
 import 'package:project_erp/controllers/getController.dart';
 import 'package:project_erp/controllers/themeController.dart';
@@ -193,6 +194,9 @@ class Login extends StatelessWidget {
                           hoverColor: Theme.of(context).hoverColor,
                           onPressed: () {
                             Get.offAndToNamed('/dashboard');
+                            // HoverWidgetState().dispose();
+
+                            // print(HoverWidgetState().toString());
                           },
                           child: Text(
                             'Login',

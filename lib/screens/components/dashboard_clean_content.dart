@@ -18,6 +18,7 @@ import 'package:project_erp/screens/components/top_referals.dart';
 import 'package:project_erp/screens/components/users.dart';
 import 'package:project_erp/screens/components/users_by_device.dart';
 import 'package:project_erp/screens/components/viewers.dart';
+import 'package:provider/provider.dart';
 
 import 'discussions.dart';
 
@@ -280,7 +281,5 @@ class DashboardCleanContent extends StatelessWidget {
     //           ),
     //   ],
     // ),
-
-    ;
   }
 }

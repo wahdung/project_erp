@@ -45,6 +45,7 @@ class WelcomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // HoverWidgetState().dispose();
     final themeController = Get.find<GetThemeController>();
     // TODO: implement build
     return Container(
@@ -140,8 +141,9 @@ class WelcomeScreen extends StatelessWidget {
                         hoverColor: Theme.of(context).hoverColor,
                         onPressed: () {
                           toLogin();
+                          // HoverWidgetState().dispose();
                         },
-                        child: Image.asset('/images/logompe.png'),
+                        child: Image.asset('assets/images/logompe.png'),
                       )),
                     ),
                     SizedBox(
@@ -157,55 +159,9 @@ class WelcomeScreen extends StatelessWidget {
                         hoverColor: Theme.of(context).hoverColor,
                         onPressed: () {
                           toLogin();
+                          // HoverWidgetState().dispose();
                         },
-                        child: Image.asset('/images/dwiputra.png'),
-                      )),
-                    ),
-                    SizedBox(
-                      width: 25,
-                    ),
-                  ],
-                ),
-              if (themeController.Mobile(context))
-                SizedBox(
-                  height: 25,
-                ),
-              if (themeController.Mobile(context))
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    SizedBox(
-                      width: 25,
-                    ),
-                    SizedBox(
-                      width: 125,
-                      height: 125,
-                      child: HoverWidget(
-                          child: FloatingActionButton(
-                        heroTag: UniqueKey(),
-                        backgroundColor: Theme.of(context).cardColor,
-                        hoverColor: Theme.of(context).hoverColor,
-                        onPressed: () {
-                          toLogin();
-                        },
-                        child: Image.asset('/images/rajaniaga.png'),
-                      )),
-                    ),
-                    SizedBox(
-                      width: 25,
-                    ),
-                    SizedBox(
-                      width: 125,
-                      height: 125,
-                      child: HoverWidget(
-                          child: FloatingActionButton(
-                        heroTag: UniqueKey(),
-                        backgroundColor: Theme.of(context).cardColor,
-                        hoverColor: Theme.of(context).hoverColor,
-                        onPressed: () {
-                          toLogin();
-                        },
-                        child: Image.asset('/images/golden.png'),
+                        child: Image.asset('assets/images/dwiputra.png'),
                       )),
                     ),
                     SizedBox(
@@ -234,8 +190,9 @@ class WelcomeScreen extends StatelessWidget {
                         hoverColor: Theme.of(context).hoverColor,
                         onPressed: () {
                           toLogin();
+                          // HoverWidgetState().dispose();
                         },
-                        child: Image.asset('/images/alamlangit.png'),
+                        child: Image.asset('assets/images/rajaniaga.png'),
                       )),
                     ),
                     SizedBox(
@@ -251,8 +208,9 @@ class WelcomeScreen extends StatelessWidget {
                         hoverColor: Theme.of(context).hoverColor,
                         onPressed: () {
                           toLogin();
+                          // HoverWidgetState().dispose();
                         },
-                        child: Image.asset('/images/blanjablanja.png'),
+                        child: Image.asset('assets/images/golden.png'),
                       )),
                     ),
                     SizedBox(
@@ -281,8 +239,9 @@ class WelcomeScreen extends StatelessWidget {
                         hoverColor: Theme.of(context).hoverColor,
                         onPressed: () {
                           toLogin();
+                          // HoverWidgetState().dispose();
                         },
-                        child: Image.asset('/images/koperasi.png'),
+                        child: Image.asset('assets/images/alamlangit.png'),
                       )),
                     ),
                     SizedBox(
@@ -298,8 +257,58 @@ class WelcomeScreen extends StatelessWidget {
                         hoverColor: Theme.of(context).hoverColor,
                         onPressed: () {
                           toLogin();
+                          // HoverWidgetState().dispose();
                         },
-                        child: Image.asset('/images/hrm.png'),
+                        child: Image.asset('assets/images/blanjablanja.png'),
+                      )),
+                    ),
+                    SizedBox(
+                      width: 25,
+                    ),
+                  ],
+                ),
+              if (themeController.Mobile(context))
+                SizedBox(
+                  height: 25,
+                ),
+              if (themeController.Mobile(context))
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    SizedBox(
+                      width: 25,
+                    ),
+                    SizedBox(
+                      width: 125,
+                      height: 125,
+                      child: HoverWidget(
+                          child: FloatingActionButton(
+                        heroTag: UniqueKey(),
+                        backgroundColor: Theme.of(context).cardColor,
+                        hoverColor: Theme.of(context).hoverColor,
+                        onPressed: () {
+                          toLogin();
+                          // HoverWidgetState().dispose();
+                        },
+                        child: Image.asset('assets/images/koperasi.png'),
+                      )),
+                    ),
+                    SizedBox(
+                      width: 25,
+                    ),
+                    SizedBox(
+                      width: 125,
+                      height: 125,
+                      child: HoverWidget(
+                          child: FloatingActionButton(
+                        heroTag: UniqueKey(),
+                        backgroundColor: Theme.of(context).cardColor,
+                        hoverColor: Theme.of(context).hoverColor,
+                        onPressed: () {
+                          toLogin();
+                          // HoverWidgetState().dispose();
+                        },
+                        child: Image.asset('assets/images/hrm.png'),
                       )),
                     ),
                     SizedBox(
@@ -324,8 +333,9 @@ class WelcomeScreen extends StatelessWidget {
                         hoverColor: Theme.of(context).hoverColor,
                         onPressed: () {
                           toLogin();
+                          // HoverWidgetState().dispose();
                         },
-                        child: Image.asset('/images/logompe.png'),
+                        child: Image.asset('assets/images/logompe.png'),
                       )),
                     ),
                     SizedBox(
@@ -341,8 +351,9 @@ class WelcomeScreen extends StatelessWidget {
                         hoverColor: Theme.of(context).hoverColor,
                         onPressed: () {
                           toLogin();
+                          // HoverWidgetState().dispose();
                         },
-                        child: Image.asset('/images/dwiputra.png'),
+                        child: Image.asset('assets/images/dwiputra.png'),
                       )),
                     ),
                     SizedBox(
@@ -358,8 +369,9 @@ class WelcomeScreen extends StatelessWidget {
                         hoverColor: Theme.of(context).hoverColor,
                         onPressed: () {
                           toLogin();
+                          // HoverWidgetState().dispose();
                         },
-                        child: Image.asset('/images/rajaniaga.png'),
+                        child: Image.asset('assets/images/rajaniaga.png'),
                       )),
                     ),
                     SizedBox(
@@ -375,8 +387,9 @@ class WelcomeScreen extends StatelessWidget {
                         hoverColor: Theme.of(context).hoverColor,
                         onPressed: () {
                           toLogin();
+                          // HoverWidgetState().dispose();
                         },
-                        child: Image.asset('/images/golden.png'),
+                        child: Image.asset('assets/images/golden.png'),
                       )),
                     ),
                     SizedBox(
@@ -403,8 +416,9 @@ class WelcomeScreen extends StatelessWidget {
                         hoverColor: Theme.of(context).hoverColor,
                         onPressed: () {
                           toLogin();
+                          // HoverWidgetState().dispose();
                         },
-                        child: Image.asset('/images/alamlangit.png'),
+                        child: Image.asset('assets/images/alamlangit.png'),
                       )),
                     ),
                     SizedBox(
@@ -420,8 +434,9 @@ class WelcomeScreen extends StatelessWidget {
                         hoverColor: Theme.of(context).hoverColor,
                         onPressed: () {
                           toLogin();
+                          // HoverWidgetState().dispose();
                         },
-                        child: Image.asset('/images/blanjablanja.png'),
+                        child: Image.asset('assets/images/blanjablanja.png'),
                       )),
                     ),
                     SizedBox(
@@ -437,8 +452,9 @@ class WelcomeScreen extends StatelessWidget {
                         hoverColor: Theme.of(context).hoverColor,
                         onPressed: () {
                           toLogin();
+                          // HoverWidgetState().dispose();
                         },
-                        child: Image.asset('/images/koperasi.png'),
+                        child: Image.asset('assets/images/koperasi.png'),
                       )),
                     ),
                     SizedBox(
@@ -454,8 +470,9 @@ class WelcomeScreen extends StatelessWidget {
                         hoverColor: Theme.of(context).hoverColor,
                         onPressed: () {
                           toLogin();
+                          // HoverWidgetState().dispose();
                         },
-                        child: Image.asset('/images/hrm.png'),
+                        child: Image.asset('assets/images/hrm.png'),
                       )),
                     ),
                     SizedBox(
@@ -480,8 +497,9 @@ class WelcomeScreen extends StatelessWidget {
                         hoverColor: Theme.of(context).hoverColor,
                         onPressed: () {
                           toLogin();
+                          // HoverWidgetState().dispose();
                         },
-                        child: Image.asset('/images/logompe.png'),
+                        child: Image.asset('assets/images/logompe.png'),
                       )),
                     ),
                     SizedBox(
@@ -497,8 +515,9 @@ class WelcomeScreen extends StatelessWidget {
                         hoverColor: Theme.of(context).hoverColor,
                         onPressed: () {
                           toLogin();
+                          // HoverWidgetState().dispose();
                         },
-                        child: Image.asset('/images/dwiputra.png'),
+                        child: Image.asset('assets/images/dwiputra.png'),
                       )),
                     ),
                     SizedBox(
@@ -514,8 +533,9 @@ class WelcomeScreen extends StatelessWidget {
                         hoverColor: Theme.of(context).hoverColor,
                         onPressed: () {
                           toLogin();
+                          // HoverWidgetState().dispose();
                         },
-                        child: Image.asset('/images/rajaniaga.png'),
+                        child: Image.asset('assets/images/rajaniaga.png'),
                       )),
                     ),
                     SizedBox(
@@ -565,8 +585,9 @@ class WelcomeScreen extends StatelessWidget {
                         hoverColor: Theme.of(context).hoverColor,
                         onPressed: () {
                           toLogin();
+                          // HoverWidgetState().dispose();
                         },
-                        child: Image.asset('/images/golden.png'),
+                        child: Image.asset('assets/images/golden.png'),
                       )),
                     ),
                     SizedBox(
@@ -582,8 +603,9 @@ class WelcomeScreen extends StatelessWidget {
                         hoverColor: Theme.of(context).hoverColor,
                         onPressed: () {
                           toLogin();
+                          // HoverWidgetState().dispose();
                         },
-                        child: Image.asset('/images/alamlangit.png'),
+                        child: Image.asset('assets/images/alamlangit.png'),
                       )),
                     ),
                     SizedBox(
@@ -599,8 +621,9 @@ class WelcomeScreen extends StatelessWidget {
                         hoverColor: Theme.of(context).hoverColor,
                         onPressed: () {
                           toLogin();
+                          // HoverWidgetState().dispose();
                         },
-                        child: Image.asset('/images/blanjablanja.png'),
+                        child: Image.asset('assets/images/blanjablanja.png'),
                       )),
                     ),
                     SizedBox(
@@ -650,8 +673,9 @@ class WelcomeScreen extends StatelessWidget {
                         hoverColor: Theme.of(context).hoverColor,
                         onPressed: () {
                           toLogin();
+                          // HoverWidgetState().dispose();
                         },
-                        child: Image.asset('/images/koperasi.png'),
+                        child: Image.asset('assets/images/koperasi.png'),
                       )),
                     ),
                     SizedBox(
@@ -666,9 +690,10 @@ class WelcomeScreen extends StatelessWidget {
                         backgroundColor: Theme.of(context).cardColor,
                         hoverColor: Theme.of(context).hoverColor,
                         onPressed: () {
-                          Get.to(LoginScreen());
+                          toLogin();
+                          // HoverWidgetState().dispose();
                         },
-                        child: Image.asset('/images/hrm.png'),
+                        child: Image.asset('assets/images/hrm.png'),
                       )),
                     ),
                     // SizedBox(

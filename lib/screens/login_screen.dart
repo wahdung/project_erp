@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:hover_widget/hover_widget.dart';
 import 'package:project_erp/constants/constants.dart';
 import 'package:project_erp/constants/responsive.dart';
 import 'package:project_erp/controllers/themeController.dart';
@@ -16,6 +17,7 @@ class LoginScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // HoverWidgetState().dispose();
     // final themeController = Get.find<GetThemeController>();
     // final themeController = Get.put(GetThemeController());
     return Container(
