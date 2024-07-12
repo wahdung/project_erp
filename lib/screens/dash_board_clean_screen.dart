@@ -43,15 +43,37 @@ class DashboardCleanScreen extends StatelessWidget {
                       ))
                   : Container(),
               Expanded(
-                  child: Scaffold(
-                appBar: PreferredSize(
-                  preferredSize: Size.fromHeight(70),
-                  child: AppBar(
-                      flexibleSpace: Container(
-                    child: CustomAppbar(),
-                  )),
-                ),
-                body: DashboardCleanContent(),
+                  child: Stack(
+                children: [
+                  Scaffold(
+                    appBar: PreferredSize(
+                      preferredSize: Size.fromHeight(70),
+                      child: AppBar(
+                          flexibleSpace: Container(
+                        child: CustomAppbar(),
+                      )),
+                    ),
+                    body: DashboardCleanContent(),
+                  ),
+                  // Padding(
+                  //   padding: EdgeInsets.only(top: 50),
+                  //   child: Card(
+                  //     color: Theme.of(context).cardColor,
+                  //     shadowColor: TextColorBlue,
+                  //     child: Column(children: [
+                  //       SizedBox(
+                  //         height: 10,
+                  //       ),
+                  //       Text(
+                  //         'CHART 1',
+                  //         style: TextStyle(
+                  //             fontWeight: FontWeight.bold, fontSize: 20),
+                  //       ),
+                  //       Container(width: 470, height: 300, child: Text("")),
+                  //     ]),
+                  //   ),
+                  // )
+                ],
               )),
 
               // Expanded(

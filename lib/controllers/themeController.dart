@@ -17,6 +17,8 @@ class GetThemeController extends GetxController {
   RxBool visibleSetting = false.obs;
   RxBool visibleDrawer = false.obs;
 
+  var selectedValue = "".obs;
+
   final _key = 'theme';
 
   bool Mobile(BuildContext context) => MediaQuery.of(context).size.width < 850;

@@ -1,3 +1,4 @@
+import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -29,7 +30,12 @@ class DashboardCleanContent extends StatelessWidget {
   Widget build(BuildContext context) {
     // final themeController = Get.put(GetThemeController());
     final themeController = Get.find<GetThemeController>();
-
+    List<String> items = [
+      'Daily',
+      'Monthly',
+      'Yearly',
+    ];
+    // String selectedValue = "Daily";
     return SafeArea(
         child: SingleChildScrollView(
       padding: EdgeInsets.all(appPadding),
@@ -42,6 +48,134 @@ class DashboardCleanContent extends StatelessWidget {
           ),
           SizedBox(
             height: appPadding,
+          ),
+          Obx(
+            () => Visibility(
+              visible: themeController.visibleDashboard.value,
+              child: Wrap(
+                spacing: 120,
+                children: [
+                  Card(
+                    margin: EdgeInsets.all(20),
+                    elevation: 6,
+                    color: Theme.of(context).cardColor,
+                    shadowColor: TextColorBlue,
+                    child: Container(
+                      width: 500,
+                      height: 150,
+                      padding: EdgeInsets.all(20),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            'Filter :',
+                            style: TextStyle(
+                                color: TextColorBlue,
+                                fontWeight: FontWeight.bold,
+                                fontSize: 20),
+                            textAlign: TextAlign.left,
+                          ),
+                          SizedBox(
+                            height: 20,
+                          ),
+                          Row(
+                            children: [
+                              SizedBox(
+                                child: DropdownButtonHideUnderline(
+                                  child: DropdownButton2<String>(
+                                    dropdownStyleData: DropdownStyleData(
+                                        elevation: 1,
+                                        decoration: BoxDecoration(
+                                            borderRadius:
+                                                BorderRadius.circular(10))),
+                                    style: TextStyle(
+                                        color: TextColorBlue,
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: 15),
+                                    buttonStyleData: ButtonStyleData(
+                                        decoration: BoxDecoration(
+                                            border: Border.all(
+                                                color: TextColorBlue, width: 2),
+                                            borderRadius:
+                                                BorderRadius.circular(20))),
+                                    hint: Text(
+                                      "Sort By",
+                                      style: TextStyle(
+                                          color: TextColorBlue,
+                                          fontWeight: FontWeight.bold,
+                                          fontSize: 15),
+                                    ),
+                                    items: items
+                                        .map((String item) =>
+                                            DropdownMenuItem<String>(
+                                                value: item, child: Text(item)))
+                                        .toList(),
+                                    value: themeController
+                                                .selectedValue.value ==
+                                            ""
+                                        ? null
+                                        : themeController.selectedValue.value,
+                                    onChanged: (NewValue) {
+                                      print(NewValue);
+                                      themeController.selectedValue.value =
+                                          NewValue.toString();
+                                      // themeController.selectedValue.value = "Daily";
+                                    },
+                                  ),
+                                ),
+                              ),
+                              SizedBox(
+                                width: 20,
+                              ),
+                              SizedBox(
+                                  width: 250,
+                                  height: 50,
+                                  child: TextField(
+                                    decoration: InputDecoration(
+                                        labelText: 'DATE',
+                                        filled: true,
+                                        prefixIcon: Icon(Icons.calendar_today),
+                                        enabledBorder: OutlineInputBorder(
+                                          borderRadius: BorderRadius.all(
+                                              Radius.circular(20)),
+                                        )),
+                                  ))
+                            ],
+                          )
+                          // Text('login untuk masuk sistem'),
+                        ],
+                      ),
+                    ),
+                  ),
+                  Card(
+                    margin: EdgeInsets.all(20),
+                    elevation: 6,
+                    color: Theme.of(context).cardColor,
+                    shadowColor: TextColorBlue,
+                    child: Container(
+                      padding: EdgeInsets.all(20),
+                      width: 500,
+                      height: 100,
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            'Daily Report :',
+                            style: TextStyle(
+                                color: TextColorBlue,
+                                fontWeight: FontWeight.bold,
+                                fontSize: 20),
+                            textAlign: TextAlign.left,
+                          )
+                        ],
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
           ),
           Obx(
             () => Visibility(
@@ -137,6 +271,41 @@ class DashboardCleanContent extends StatelessWidget {
                     child: LineChartSample2(),
                   ),
                 ],
+              ),
+            ),
+          ),
+          Obx(
+            () => Visibility(
+              visible: themeController.visibleSetting.value,
+              child: Card(
+                margin: EdgeInsets.all(20),
+                elevation: 6,
+                color: Theme.of(context).cardColor,
+                shadowColor: TextColorBlue,
+                child: Wrap(children: [
+                  Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      SizedBox(
+                        height: 10,
+                        width: double.infinity,
+                      ),
+                      Text(
+                        'TAMBAH DATA CUSTOMER',
+                        style: TextStyle(
+                            fontWeight: FontWeight.bold, fontSize: 20),
+                        textAlign: TextAlign.center,
+                      ),
+                      SizedBox(
+                        height: 2160,
+                      ),
+                    ],
+                  ),
+                  Container(child: Text("")
+                      // ChartLine2(),
+                      ),
+                ]),
               ),
             ),
           ),
