@@ -18,6 +18,7 @@ class GetThemeController extends GetxController {
   RxBool visibleDrawer = false.obs;
 
   var selectedValue = "".obs;
+  var dateValue = "".obs;
 
   final _key = 'theme';
 

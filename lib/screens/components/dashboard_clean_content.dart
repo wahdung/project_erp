@@ -1,8 +1,11 @@
+import 'package:calendar_date_picker2/calendar_date_picker2.dart';
 import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:hover_widget/hover_widget.dart';
+import 'package:intl/intl.dart';
+import 'package:month_year_picker/month_year_picker.dart';
 import 'package:project_erp/constants/constants.dart';
 import 'package:project_erp/constants/responsive.dart';
 import 'package:project_erp/controllers/themeController.dart';
@@ -132,11 +135,44 @@ class DashboardCleanContent extends StatelessWidget {
                                   width: 250,
                                   height: 50,
                                   child: TextField(
+                                    readOnly: true,
+                                    onSubmitted: (date) {
+                                      Text(date);
+                                    },
+                                    onTap: () async {
+                                      final date = await showDatePicker(
+                                          context: context,
+                                          firstDate: DateTime(
+                                              DateTime.now().year - 10, 1),
+                                          initialDate: DateTime.now(),
+                                          lastDate: DateTime(20100));
+                                      if (date != null) {
+                                        var formatdate =
+                                            DateFormat.yMd().format(date);
+                                        print(formatdate);
+                                        themeController.dateValue.value =
+                                            formatdate;
+                                      }
+                                    },
                                     decoration: InputDecoration(
-                                        labelText: 'DATE',
+                                        labelStyle: TextStyle(
+                                            color: TextColorBlue,
+                                            fontWeight: FontWeight.bold,
+                                            fontSize: 15),
+                                        labelText: themeController
+                                                    .dateValue.value !=
+                                                ""
+                                            ? themeController.dateValue.value
+                                                .toString()
+                                            : 'DATE',
                                         filled: true,
-                                        prefixIcon: Icon(Icons.calendar_today),
+                                        prefixIcon: Icon(
+                                          Icons.calendar_today,
+                                          color: TextColorBlue,
+                                        ),
                                         enabledBorder: OutlineInputBorder(
+                                          borderSide: BorderSide(
+                                              color: TextColorBlue, width: 2),
                                           borderRadius: BorderRadius.all(
                                               Radius.circular(20)),
                                         )),
@@ -156,8 +192,8 @@ class DashboardCleanContent extends StatelessWidget {
                     child: Container(
                       padding: EdgeInsets.all(20),
                       width: 500,
-                      height: 100,
-                      child: Row(
+                      height: 150,
+                      child: Column(
                         mainAxisAlignment: MainAxisAlignment.start,
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
@@ -168,6 +204,59 @@ class DashboardCleanContent extends StatelessWidget {
                                 fontWeight: FontWeight.bold,
                                 fontSize: 20),
                             textAlign: TextAlign.left,
+                          ),
+                          SizedBox(
+                            height: 20,
+                          ),
+                          Row(
+                            children: [
+                              SizedBox(
+                                  width: 450,
+                                  height: 50,
+                                  child: TextField(
+                                    readOnly: true,
+                                    onSubmitted: (date) {
+                                      Text(date);
+                                    },
+                                    onTap: () async {
+                                      final date = await showDatePicker(
+                                          context: context,
+                                          firstDate: DateTime(
+                                              DateTime.now().year - 10, 1),
+                                          initialDate: DateTime.now(),
+                                          lastDate: DateTime(20100));
+                                      if (date != null) {
+                                        var formatdate =
+                                            DateFormat.yMd().format(date);
+                                        print(formatdate);
+                                        themeController.dateValue.value =
+                                            formatdate;
+                                      }
+                                    },
+                                    decoration: InputDecoration(
+                                        labelStyle: TextStyle(
+                                            color: TextColorBlue,
+                                            fontWeight: FontWeight.bold,
+                                            fontSize: 15),
+                                        labelText: themeController
+                                                    .dateValue.value !=
+                                                ""
+                                            ? themeController.dateValue.value
+                                                .toString()
+                                            : 'DATE',
+                                        filled: true,
+                                        prefixIcon: Icon(
+                                          Icons.calendar_today,
+                                          color: TextColorBlue,
+                                        ),
+                                        enabledBorder: OutlineInputBorder(
+                                          borderSide: BorderSide(
+                                              color: TextColorBlue, width: 2),
+                                          borderRadius: BorderRadius.all(
+                                              Radius.circular(20)),
+                                        )),
+                                  ))
+                            ],
                           )
                         ],
                       ),
